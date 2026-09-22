@@ -1,0 +1,136 @@
+{
+  "bench": "ScaleBench",
+  "version": "0.1",
+  "generated_at": 1789784797.1125078,
+  "overall": 0.9504039459756365,
+  "tasks": [
+    {
+      "task": "known_recovery_kpp",
+      "score": 0.8259,
+      "details": {
+        "law": "c = 1.710·D^0.50·r^0.50",
+        "exp_err": 0.0,
+        "pref_err": 0.2901,
+        "systematic_bias": "fd_pulled_front_lag ~15%",
+        "bic_top": "c = 1.710·D^0.50·r^0.50",
+        "speeds": [
+          1.704,
+          2.416,
+          1.208,
+          2.568,
+          1.08,
+          3.624
+        ]
+      }
+    },
+    {
+      "task": "cross_resolution_kpp",
+      "score": 1.0,
+      "details": {
+        "prefactors": [
+          1.687,
+          1.687,
+          1.687
+        ],
+        "spread": 0.0
+      }
+    },
+    {
+      "task": "longhorizon_closure_drift",
+      "score": 1.0,
+      "details": {
+        "energy_ratio": 1.18,
+        "gate": 0.35,
+        "horizon": 0.4,
+        "claimed": true
+      }
+    },
+    {
+      "task": "spectrum_law_turb2d",
+      "score": 1.0,
+      "details": {
+        "slope_above": -2.0345,
+        "se_slope": 0.0489,
+        "r2_above": 0.9796,
+        "slope_below": -0.9583,
+        "separation": 1.076,
+        "k_band_above": [
+          13.0,
+          50.0
+        ],
+        "theory_gap": "asymptotic k^-3 vs measured -2.03±0.05 (log-corrected regime)",
+        "regime_band": [
+          -2.4,
+          -1.8
+        ]
+      }
+    },
+    {
+      "task": "m3_partition_law",
+      "score": 0.9756,
+      "details": {
+        "gamma": 0.7927,
+        "se_gamma": 0.0008,
+        "r2": 1.0,
+        "a_recovered": 0.6021,
+        "conservation_resid_frac": 0.0,
+        "peaks_by_cover": [
+          0.06457,
+          0.04661,
+          0.03199
+        ]
+      }
+    },
+    {
+      "task": "extrapolation_kpp",
+      "score": 0.8075,
+      "details": {
+        "mean_rel_err": 0.0481,
+        "per_config_rel_err": {
+          "3.0|3.0": 0.0804,
+          "4.0|1.0": 0.0016,
+          "1.0|4.0": 0.083,
+          "0.25|1.0": 0.0932,
+          "1.0|0.25": 0.0297,
+          "0.3|0.3": 0.0009
+        },
+        "law": "c = 1.710·D^0.50·r^0.50（校准域 [0.5,2]²）",
+        "solver_adaptation": "L≥c·t_end·2.2+60；慢前锋 t_end=80（防边界/瞬态伪影）"
+      }
+    },
+    {
+      "task": "nis_prune_consistency",
+      "score": 1.0,
+      "details": {
+        "n_pruned_sweep": [
+          26,
+          35,
+          50
+        ],
+        "recon_r2_ratio": 0.9991,
+        "recon_spearman": 0.9961,
+        "dead_channels": 0,
+        "cross_block_redundancy": 38,
+        "mi_ratio_t095": 0.808
+      }
+    },
+    {
+      "task": "chaos_audit_gate",
+      "score": 0.9942,
+      "details": {
+        "lambda_logistic": 0.69295,
+        "lambda_rel_err_vs_ln2": 0.00029,
+        "lambda_contractive": [
+          -0.223,
+          -5.386
+        ],
+        "regime_verdicts": [
+          true,
+          true,
+          true
+        ],
+        "card_decision_eligible": true
+      }
+    }
+  ]
+}
