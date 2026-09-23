@@ -1,8 +1,8 @@
-# ScaleBench v1.2 —— ARM 公开基准（裁判权基石）
+# ScaleBench v1.3 —— ARM 公开基准（裁判权基石）
 
 > **测的是"自动重整化"**：给定微观模拟器，机器能否自己发现宏观定律、
 > 并诚实地给出适用边界与误差界。防刷分是设计目标，不是事后补丁。
-> 榜单唯一准绳：`leaderboard.json`（当前 overall **0.9504**，8 题）。
+> 榜单唯一准绳：`leaderboard.json`（当前 overall **0.9556**，9 题）。
 
 ## 这是什么
 
@@ -22,6 +22,7 @@ ScaleBench 是 LSWM/ARM 项目的公开基准。五个任务族对应"自动发�
 | Extrapolation | `extrapolation_kpp`：校准域外 6 配置对拍 | 0.808 | 定律 vs 插值的分水岭；求解器适配是考题内容 |
 | Discovery | `nis_prune_consistency`：NIS 剪枝维度一致性 | 1.000 | 几何给定宏观态——k 由数据定，序参量可重构 |
 | Discovery（混沌审计） | `chaos_audit_gate`：混沌指标验收门 | 0.994 | 混沌约束进验收（Lyapunov/吸引子距离卡指标化） |
+| Discovery（RG 不变量） | `rg_invariant_sir`：异质混合粗粒化不变量判定 | 0.997 | 攻击率 ε-collapse 对拍解析解；峰压峰时判为非不变量 |
 
 ## 运行与复现
 
