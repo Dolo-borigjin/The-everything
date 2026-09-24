@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScaleBench v1.3 — 自动重整化公开基准 · LSWM/ARM</title>
-<meta name="description" content="ScaleBench：测机器能否自己发现宏观定律并诚实给出误差界。9 题榜单 overall 0.9556，防刷分是设计目标。">
+<title>ScaleBench v1.3 — Public Benchmark for Auto-Renormalization · LSWM/ARM</title>
+<meta name="description" content="ScaleBench: can a machine discover macroscopic laws from a microscopic simulator and honestly report error bars? 9-task leaderboard, overall 0.9556. Anti-gaming by design.">
 <style>
   :root{
     --bg:#0b0e14; --panel:#121722; --panel2:#171e2c; --line:#232c3f;
@@ -14,7 +14,7 @@
     --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,"PingFang SC","Helvetica Neue",sans-serif;
+  body{background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,"Helvetica Neue",sans-serif;
        background-image:radial-gradient(1200px 500px at 80% -10%,rgba(90,167,255,.08),transparent),
                         radial-gradient(900px 400px at 10% 0%,rgba(77,208,166,.06),transparent)}
   .wrap{max-width:1080px;margin:0 auto;padding:48px 24px 80px}
@@ -61,84 +61,89 @@
   footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);color:var(--faint);font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   footer a{color:var(--accent2);text-decoration:none}
   a{color:var(--accent2)}
+  .lang{float:right;font-size:13px}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header class="hero">
-  <div class="kicker">LSWM / ARM · Public Benchmark</div>
+  <div class="kicker">LSWM / ARM · Public Benchmark <span class="lang"><a href="./index-zh.html">中文版</a></span></div>
   <h1>ScaleBench<span class="v">v1.3</span></h1>
-  <p class="sub">测的是<b>自动重整化</b>：给定微观模拟器，机器能否自己发现宏观定律，
-  并<b>诚实地</b>给出适用边界与误差界。防刷分是设计目标，不是事后补丁。
-  榜单唯一准绳：<code>leaderboard.json</code>；复现仲裁脚本：<code>reproduce.py</code>。</p>
+  <p class="sub">A benchmark for <b>auto-renormalization</b>: given a microscopic
+  simulator, can a machine discover macroscopic effective laws — and report their
+  validity boundaries and error bars <b>honestly</b>? Anti-gaming is a design
+  goal, not a patch. Single source of truth: <code>leaderboard.json</code>;
+  executable arbitration: <code>reproduce.py</code>.</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num">0.9556</div><div class="lbl">OVERALL（9 题均值）</div></div>
-    <div class="stat"><div class="num">8</div><div class="lbl">考题 · 5 任务族</div></div>
-    <div class="stat"><div class="num">5 / 8</div><div class="lbl">满分题</div></div>
-    <div class="stat"><div class="num">±0.02</div><div class="lbl">复现仲裁容差</div></div>
+    <div class="stat"><div class="num">0.9556</div><div class="lbl">OVERALL (mean of 9)</div></div>
+    <div class="stat"><div class="num">9</div><div class="lbl">TASKS · 6 FAMILIES</div></div>
+    <div class="stat"><div class="num">4 / 9</div><div class="lbl">PERFECT SCORES</div></div>
+    <div class="stat"><div class="num">±0.02</div><div class="lbl">REPRODUCTION TOLERANCE</div></div>
   </div>
 </header>
 
 <section id="board">
-  <h2>榜单</h2>
-  <p class="note">全部数字来自确定性管线（种子固定）。0.826 与 0.808 不是 bug——是物理难度的如实记录（见「诚实边界」）。</p>
+  <h2>Leaderboard</h2>
+  <p class="note">All numbers come from a deterministic pipeline (fixed seeds).
+  0.826 and 0.808 are not bugs — they are honest records of physical difficulty
+  (see "Honest boundaries").</p>
   <div class="tblwrap"><table>
-    <thead><tr><th>考题</th><th>得分</th><th>关键实测</th><th>防什么</th></tr></thead>
+    <thead><tr><th>Task</th><th>Score</th><th>Key measurement</th><th>Anti-gaming</th></tr></thead>
     <tbody>
       <tr>
         <td class="task">known_recovery_kpp<div class="family">Known-Recovery</div></td>
         <td class="scorecell s-mid">0.826<div class="bar"><i style="width:82.6%"></i></div></td>
-        <td>恢复 KPP 行波律 <code>c = 1.710·D^0.50·r^0.50</code>，指数误差 0<div class="detail">pref_err 0.290 ← FD 拉拽前锋系统性滞后 ~15%，如实扣分</div></td>
-        <td class="guard">「看起来对」——系数被离散滞后污染时照扣分</td>
+        <td>Recovered KPP wave-speed law <code>c = 1.710·D^0.50·r^0.50</code>, exponent error 0<div class="detail">pref_err 0.290 ← FD pulled-front systematic lag ~15%, charged as measured</div></td>
+        <td class="guard">"Looks right" — prefactor polluted by discretization lag is still charged</td>
       </tr>
       <tr>
         <td class="task">cross_resolution_kpp<div class="family">Cross-Resolution</div></td>
         <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
-        <td>3 种网格恢复同一宏观律<div class="detail">prefactor spread = 0.000</div></td>
-        <td class="guard">过拟合单一网格</td>
+        <td>Same macroscopic law recovered on 3 grids<div class="detail">prefactor spread = 0.000</div></td>
+        <td class="guard">Overfitting to one grid</td>
       </tr>
       <tr>
         <td class="task">longhorizon_closure_drift<div class="family">Long-Horizon</div></td>
         <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
-        <td>闭合 100× 视界漂移审计通过<div class="detail">未标定闭合必然低分——短程拟合刷不动</div></td>
-        <td class="guard">短程拟合冒充长程稳定</td>
+        <td>Closure passes 100×-horizon drift audit<div class="detail">uncalibrated closures necessarily score low — short-range fitting cannot game it</div></td>
+        <td class="guard">Short-range fit posing as long-range stability</td>
       </tr>
       <tr>
         <td class="task">spectrum_law_turb2d<div class="family">Discovery</div></td>
         <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
-        <td>湍流有效谱斜率 −2.03±0.05（R²=0.98）+ 双级联分离<div class="detail">theory_gap：渐近 k⁻³ vs 实测 −2.03（对数修正区制）如实上报</div></td>
-        <td class="guard">教科书复读——评 regime 定律与 theory_gap，不评背书</td>
+        <td>Turbulence effective spectral slope −2.03±0.05 (R²=0.98) + dual cascade separation<div class="detail">theory_gap: asymptotic k⁻³ vs measured −2.03 (log-corrected regime), reported honestly</div></td>
+        <td class="guard">Textbook recitation — regime laws and theory_gap are scored, not memorized answers</td>
       </tr>
       <tr>
         <td class="task">m3_partition_law<div class="family">Discovery</div></td>
         <td class="scorecell s-hi">0.976<div class="bar"><i style="width:97.6%"></i></div></td>
-        <td>跨域塔分配律 γ = 0.7927±0.0008（R²=1.0）<div class="detail">发现数据取自守恒审计账（残差 0%），非闭式代案</div></td>
-        <td class="guard">闭式代案——必须由审计账「发现」而非推导</td>
+        <td>Cross-domain tower partition law γ = 0.7927±0.0008 (R²=1.0)<div class="detail">discovered from the conservation audit ledger (residual 0%), not a closed-form substitute</div></td>
+        <td class="guard">Closed-form stand-ins — the law must be <i>found</i> from the audit ledger</td>
       </tr>
       <tr>
         <td class="task">extrapolation_kpp<div class="family">Extrapolation</div></td>
         <td class="scorecell s-mid">0.808<div class="bar"><i style="width:80.8%"></i></div></td>
-        <td>校准域 [0.5,2]² 外 6 配置对拍，平均相对误差 4.81%<div class="detail">求解器自适应（L≥c·t_end·2.2+60）是考题内容的一部分</div></td>
-        <td class="guard">定律 vs 插值的分水岭——域外插值系统必败</td>
+        <td>6 out-of-domain configurations outside calibration region [0.5,2]², mean relative error 4.81%<div class="detail">solver adaptation (L≥c·t_end·2.2+60) is part of the exam</div></td>
+        <td class="guard">The law-vs-interpolation watershed — interpolation systems fail out-of-domain</td>
       </tr>
       <tr>
         <td class="task">nis_prune_consistency<div class="family">Discovery</div></td>
         <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
-        <td>NIS 剪枝维度一致性：重构 R² 比 0.9991，死通道 0<div class="detail">k 由数据定（26/35/50 扫描），序参量可重构</div></td>
-        <td class="guard">几何给定宏观态——维度必须数据驱动</td>
+        <td>NIS prune dimensional consistency: reconstruction R² ratio 0.9991, dead channels 0<div class="detail">k determined by data (26/35/50 sweep); order parameter reconstructible</div></td>
+        <td class="guard">Geometry-given macrostates — dimension must be data-driven</td>
       </tr>
       <tr>
-        <td class="task">chaos_audit_gate<div class="family">Discovery · 混沌审计</div></td>
+        <td class="task">chaos_audit_gate<div class="family">Discovery · Chaos-Audit</div></td>
         <td class="scorecell s-hi">0.994<div class="bar"><i style="width:99.4%"></i></div></td>
-        <td>Lyapunov λ=0.69295（vs ln2 相对误差 0.00029），三区制判定全对<div class="detail">混沌指标进验收门：卡指标化方可 decision 级</div></td>
-        <td class="guard">混沌约束不进验收的「伪定律」</td>
+        <td>Lyapunov λ=0.69295 (rel. err. vs ln2 = 0.00029), 3 regime verdicts all correct<div class="detail">chaos metrics in the acceptance gate: cards reach decision grade only when measured</div></td>
+        <td class="guard">Pseudo-laws that skip chaos constraints</td>
       </tr>
       <tr>
-        <td class="task">rg_invariant_sir<div class="family">Discovery · RG 不变量</div></td>
+        <td class="task">rg_invariant_sir<div class="family">Discovery · RG invariant</div></td>
         <td class="scorecell s-hi">0.997<div class="bar"><i style="width:99.7%"></i></div></td>
-        <td>攻击率跨 ε∈{0.01…1.0} collapse（spread 0.0049，对拍解析解偏差 0.34%）；峰高 0.70×/峰时 1.52× 被判为非不变量<div class="detail">异质混合粗粒化：什么幸存、什么被抹掉——个体→宏观 rung 成题</div></td>
-        <td class="guard">把随结构变化的量谎报为「普适定律」</td>
+        <td>Attack-rate collapse across ε∈{0.01…1.0} (spread 0.0049, 0.34% from analytic solution); peak height 0.70×/peak time 1.52× correctly judged <i>not</i> invariant<div class="detail">coarse-graining heterogeneous mixing: what survives and what is erased — an individual-to-macro rung as exam</div></td>
+        <td class="guard">Reporting structure-varying quantities as "universal laws"</td>
       </tr>
     </tbody>
   </table></div>
@@ -146,71 +151,75 @@
 
 <!-- MEASURED:BEGIN -->
 <section id="measured">
-  <h2>实测基线（AIFS 对拍 · 滚动更新）</h2>
-  <p class="note">数据源：<code>data/aifs/baseline_measured.json</code>（71 条实测）。
-  真值口径 = <b>AIFS 自身 0h 场</b>（自洽性技巧——答"预报与自身分析帧的一致性"，
-  非独立观测绝对精度）；多 run 时效给 均值 [散布, 样本数]——run 间散布本身
-  就是读数纪律。降水 ETS：一条跨年份错配记录已撤回（RETRACTED，证据保留）；首个有效样本待 ERA5 真值（ERA5T 滞后 ~5 天，管线与同事件守门已就位）</p>
+  <h2>Measured baselines (AIFS comparison · rolling)</h2>
+  <p class="note">Source: <code>data/aifs/baseline_measured.json</code> (71 measurements). Truth caliber = <b>AIFS's own 0h field</b> (self-consistency — consistency with its own analysis frame, not independent-observation accuracy); multi-run leads show mean [spread, n] — run-to-run spread is itself reading discipline. Precipitation ETS: one cross-year mispaired record was retracted (RETRACTED, evidence retained); first valid sample landed 2026-09-24 (AIFS +24h × ERA5, PRD window: ETS 0.712/0.241/1.0/1.0 at 0.1/1/5/10 mm; N=1, no verdict yet — stream accumulates daily); </p>
   <div class="tblwrap"><table>
-    <thead><tr><th>时效</th><th>z500 RMSE 全球<br>(m²/s²)</th>
-    <th>z500 珠江口</th><th>msl RMSE 全球<br>(Pa)</th><th>msl 珠江口</th></tr></thead>
+    <thead><tr><th>Lead</th><th>z500 RMSE global<br>(m²/s²)</th>
+    <th>z500 PRD</th><th>MSL RMSE global<br>(Pa)</th><th>MSL PRD</th></tr></thead>
     <tbody>
       <tr><td class='task'>+12h</td><td>31.7 <span class='detail'>[29.8–34.5, n=7]</span></td><td>20.6 <span class='detail'>[4.8–30.4, n=7]</span></td><td>73.1 <span class='detail'>[64.9–81.2, n=7]</span></td><td>29.9 <span class='detail'>[13.5–48.9, n=7]</span></td></tr><tr><td class='task'>+24h</td><td>46.8 <span class='detail'>[40.5–51.3, n=8]</span></td><td>18.5 <span class='detail'>[10.5–33.7, n=8]</span></td><td>102.7 <span class='detail'>[95.4–109.3, n=9]</span></td><td>27.9 <span class='detail'>[21.7–35.4, n=9]</span></td></tr><tr><td class='task'>+48h</td><td>80.7 <span class='detail'>[69.4–92.0, n=7]</span></td><td>19.6 <span class='detail'>[11.7–33.3, n=7]</span></td><td>141.6 <span class='detail'>[127.2–161.8, n=7]</span></td><td>35.9 <span class='detail'>[25.5–55.8, n=7]</span></td></tr><tr><td class='task'>+60h</td><td>89.9</td><td>18.2</td><td>145.0</td><td>24.7</td></tr><tr><td class='task'>+72h</td><td>121.4 <span class='detail'>[105.6–149.8, n=5]</span></td><td>20.6 <span class='detail'>[9.9–27.9, n=5]</span></td><td>179.9 <span class='detail'>[162.0–203.4, n=5]</span></td><td>23.7 <span class='detail'>[17.3–29.6, n=5]</span></td></tr><tr><td class='task'>+84h</td><td>129.5</td><td>18.4</td><td>181.9</td><td>26.6</td></tr><tr><td class='task'>+96h</td><td>176.4 <span class='detail'>[170.8–181.0, n=3]</span></td><td>25.9 <span class='detail'>[19.7–33.5, n=3]</span></td><td>234.3 <span class='detail'>[222.7–243.2, n=3]</span></td><td>44.2 <span class='detail'>[25.6–59.0, n=3]</span></td></tr><tr><td class='task'>+108h</td><td>214.4</td><td>24.7</td><td>268.1</td><td>52.2</td></tr><tr><td class='task'>+120h</td><td>262.0 <span class='detail'>[257.0–267.1, n=2]</span></td><td>41.4 <span class='detail'>[39.2–43.6, n=2]</span></td><td>316.9 <span class='detail'>[316.1–317.8, n=2]</span></td><td>32.7 <span class='detail'>[24.7–40.7, n=2]</span></td></tr>
     </tbody>
   </table></div>
-  <p class='note'>滞后集合 CRPS（珠江口窗，valid 20260923 00z，n=4 条）：msl: CRPS 17.38（M=5，s/s=0.54）；z: CRPS 5.48（M=5，s/s=1.64）。口径：同模式近邻 run 为成员，离散度系统性偏小——非 AIFS-ENS（开放商店无 ENS，实测 404 在案）</p>
-  <p class="note">生成：2026-09-24 09:02 （update_measured.py 幂等滚动更新）·
-  档案每文件 sha256 清单可回查字节级来源</p>
+  <p class='note'>Lagged-ensemble CRPS (PRD window, valid 20260923 00z, n=4 records): msl: CRPS 17.38（M=5，s/s=0.54）；z: CRPS 5.48（M=5，s/s=1.64）. Caliber: members are same-model recent runs (lagged ensemble), systematically under-dispersive — not AIFS-ENS (ENS absent from the open store, 404 on record)</p>
+  <p class="note">Generated: 2026-09-24 14:13 （update_measured.py idempotent rolling update）· per-file sha256 manifest traces byte-level provenance</p>
 </section>
 <!-- MEASURED:END -->
 
 <section id="families">
-  <h2>五个任务族 = 五种失败模式</h2>
-  <p class="note">每族对应「自动发现有效理论」的一种典型翻车方式；防刷分机制公开写明，欢迎攻擂。</p>
+  <h2>Five task families = five failure modes</h2>
+  <p class="note">Each family maps to one canonical failure of learned effective
+  theories; the anti-gaming mechanism of every task is public. Challenge them.</p>
   <div class="cards">
-    <div class="card"><h3>Known-Recovery</h3><p>已知定律能否恢复——但评分扣到系数级。离散格式带来的系统偏差（如 FD 拉拽前锋滞后）会被如实扣分，「形状像」不算分。</p></div>
-    <div class="card"><h3>Cross-Resolution</h3><p>同一宏观律必须在多种网格下恢复出同一系数。过拟合某一分辨率的「定律」在这里直接现形。</p></div>
-    <div class="card"><h3>Long-Horizon</h3><p>闭合模型在 100× 训练视界上漂移审计。只在短程拟合得好、长程发散的系统拿不到分——标定是硬门槛。</p></div>
-    <div class="card"><h3>Discovery</h3><p>无教科书答案：系统必须输出带误差界的宏观方程与 regime 边界（含 theory_gap 诚实上报）。这是外部提交的最终仲裁族。</p></div>
-    <div class="card"><h3>Extrapolation</h3><p>校准域之外对拍。插值系统域内满分、域外崩溃；真定律携带适用范围继续成立。这是「定律 vs 插值」的分水岭题。</p></div>
-    <div class="card"><h3>Chaos-Audit（混沌审计）</h3><p>混沌区制下 Lyapunov 指数、吸引子距离等指标化进验收门——混沌约束不满足，卡不得进入 decision 级。</p></div>
+    <div class="card"><h3>Known-Recovery</h3><p>Can a known law be recovered — scored down to the prefactor. Systematic discretization bias (e.g., FD pulled-front lag) is charged as measured; "looks right" does not score.</p></div>
+    <div class="card"><h3>Cross-Resolution</h3><p>The same law must come out of multiple grids with the same prefactor. Grid-overfit "laws" are exposed here.</p></div>
+    <div class="card"><h3>Long-Horizon</h3><p>Closures are audited for drift over 100× the training horizon. Systems that only fit short horizons fail — calibration is a hard gate.</p></div>
+    <div class="card"><h3>Discovery</h3><p>No textbook answer: the system must emit a macroscopic equation with error bars and regime boundaries (theory_gap reported honestly). This is the final arbitration family for external submissions.</p></div>
+    <div class="card"><h3>Extrapolation</h3><p>Evaluated outside the calibration domain. Interpolators score perfectly inside and collapse outside; true laws carry their validity range. The law-vs-interpolation watershed.</p></div>
+    <div class="card"><h3>Chaos-Audit</h3><p>Lyapunov exponents and attractor distances enter the acceptance gate — chaos constraints must be measured, not assumed, before a card is decision-eligible.</p></div>
   </div>
 </section>
 
 <section id="reproduce">
-  <h2>运行与复现</h2>
-  <p class="note">复现公开榜单（全绿）是任何外部提交的前置条件。逐题比对 <code>|实测 − 榜单| ≤ 0.02</code>，不一致非零退出。</p>
-<pre><span class="c"># 复现仲裁（约 3–5 分钟，确定性管线）</span>
+  <h2>Run &amp; reproduce</h2>
+  <p class="note">Full reproduction of the public leaderboard (all green) is a
+  precondition for any external submission. Per-task comparison
+  <code>|measured − leaderboard| ≤ 0.02</code>, nonzero exit on mismatch.</p>
+<pre><span class="c"># Reproduction arbitration (~3–5 min, deterministic pipeline)</span>
 cd arm
-pip install -e .            <span class="c"># 或 pip install numpy scipy pytest</span>
-python -m scalebench.reproduce                          <span class="c"># 全量复现 + 榜单比对</span>
-python -m scalebench.reproduce --only nis_prune_consistency   <span class="c"># 单题</span>
-python -m scalebench.reproduce --report out.json              <span class="c"># 另存比对报告</span></pre>
+pip install -e .            <span class="c"># or pip install numpy scipy pytest</span>
+python -m scalebench.reproduce                          <span class="c"># full rerun + leaderboard check</span>
+python -m scalebench.reproduce --only nis_prune_consistency   <span class="c"># single task</span>
+python -m scalebench.reproduce --report out.json              <span class="c"># save comparison report</span></pre>
 </section>
 
 <section id="arbitration">
-  <h2>外部提交与仲裁</h2>
+  <h2>External submissions &amp; arbitration</h2>
   <ol class="rules">
-    <li><b>前置</b>：复现公开榜单（reproduce 全绿）——复现不了榜单就没有提交资格；</li>
-    <li><b>提交物</b>：ETC 卡（误差界带校准记录）+ 考题输出 + 复现日志；</li>
-    <li><b>误差界核验</b>：宣称覆盖率与实测不符（二项 z 检验，SPEC-002）→ 降级；</li>
-    <li><b>最终仲裁</b>：Discovery 族——对无教科书答案的系统输出，由 held-out 实验数据仲裁。</li>
+    <li><b>Precondition</b>: reproduce the public leaderboard (all green) — no reproduction, no submission;</li>
+    <li><b>Submission</b>: ETC card (error bars with calibration record) + task outputs + reproduction log;</li>
+    <li><b>Error-bar check</b>: claimed coverage vs measured (binomial z-test, SPEC-002) → downgrade on mismatch;</li>
+    <li><b>Final arbitration</b>: the Discovery family — system outputs for questions with no textbook answer are judged by held-out experimental data.</li>
   </ol>
 </section>
 
 <section id="honest">
   <div class="honest">
-    <h3>诚实边界</h3>
-    <p>0.826（KPP 恢复）与 0.808（外推）不是失败：前者是 FD 离散滞后的如实记录，
-    后者是域外难度的如实记录——<b>ScaleBench 的分数下限就是物理本身的难度</b>。
-    Extrapolation 族目前只有 KPP 一题，更多域（湍流区制外推、跨域塔参数）在路线图上。
-    榜单全部数字来自仓库内模拟器（可复现、带解析参考），不依赖外部数据。</p>
+    <h3>Honest boundaries</h3>
+    <p>0.826 (KPP recovery) and 0.808 (extrapolation) are not failures: the first
+    is an honest record of FD discretization lag, the second of out-of-domain
+    difficulty — <b>the floor of a ScaleBench score is the difficulty of the
+    physics itself</b>. The Extrapolation family currently has one task (KPP);
+    more domains (turbulence-regime extrapolation, cross-domain tower parameters)
+    are on the roadmap. All leaderboard numbers come from in-repo simulators
+    (reproducible, with analytic references) and depend on no external data.</p>
   </div>
 </section>
 
 <footer>
-  <div>ScaleBench 是 LSWM 世界模型的裁判权组件（白皮书 §6）。治理：基准与理论卡格式开源——用开放换标准地位。</div>
-  <div><a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · v1.3 · 2026-09</div>
+  <div>ScaleBench is the adjudication component of the LSWM world model
+  (whitepaper §6). Governance: benchmark and theory-card formats are open —
+  openness in exchange for standard status.</div>
+  <div><a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index-zh.html">中文版</a> · v1.3 · 2026-09</div>
 </footer>
 
 </div>
