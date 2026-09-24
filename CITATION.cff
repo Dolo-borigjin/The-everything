@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: "ScaleBench: A Reproducible Scoreboard for Auto-Renormalization in Weather Modeling"
+message: "If you use this benchmark, please cite it as below."
+type: software
+authors:
+  - name: "LSWM Project Team"
+url: "https://github.com/Dolo-borigjin/The-everything"
+abstract: >-
+  Adjudication-first public benchmark for auto-renormalization in weather
+  modeling: five task families targeting the five canonical failure modes of
+  learned effective theories, with executable arbitration (reproduce.py),
+  a deterministic leaderboard (v1.2, overall 0.9504), a live AIFS comparison
+  harness with byte-level provenance, and rolling measured baselines.
+license: MIT
+version: "1.2"
+date-released: "2026-09-23"
