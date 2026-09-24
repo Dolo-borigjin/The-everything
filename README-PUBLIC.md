@@ -1,5 +1,9 @@
 # ScaleBench v1.3 —— ARM 公开基准（裁判权基石）
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg)](https://doi.org/10.5281/zenodo.22933596)
+
+归档引用：LSWM Project Team. (2026). ScaleBench (v1.3). Zenodo. https://doi.org/10.5281/zenodo.22933596
+
 > **测的是"自动重整化"**：给定微观模拟器，机器能否自己发现宏观定律、
 > 并诚实地给出适用边界与误差界。防刷分是设计目标，不是事后补丁。
 > 榜单唯一准绳：`leaderboard.json`（当前 overall **0.9556**，9 题）。
