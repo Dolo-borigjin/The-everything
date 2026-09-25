@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ScaleBench v1.3 — Public Benchmark for Auto-Renormalization · LSWM/ARM</title>
-<meta name="description" content="ScaleBench: can a machine discover macroscopic laws from a microscopic simulator and honestly report error bars? 9-task leaderboard, overall 0.9556. Anti-gaming by design.">
+<meta name="description" content="ScaleBench: can a machine discover macroscopic laws from a microscopic simulator and honestly report error bars? 9-task leaderboard, overall 0.9917. Anti-gaming by design.">
 <style>
   :root{
     --bg:#0b0e14; --panel:#121722; --panel2:#171e2c; --line:#232c3f;
@@ -76,7 +76,7 @@
   goal, not a patch. Single source of truth: <code>leaderboard.json</code>;
   executable arbitration: <code>reproduce.py</code>.</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num">0.9556</div><div class="lbl">OVERALL (mean of 9)</div></div>
+    <div class="stat"><div class="num">0.9917</div><div class="lbl">OVERALL (mean of 9)</div></div>
     <div class="stat"><div class="num">9</div><div class="lbl">TASKS · 6 FAMILIES</div></div>
     <div class="stat"><div class="num">4 / 9</div><div class="lbl">PERFECT SCORES</div></div>
     <div class="stat"><div class="num">±0.02</div><div class="lbl">REPRODUCTION TOLERANCE</div></div>
@@ -86,15 +86,16 @@
 <section id="board">
   <h2>Leaderboard</h2>
   <p class="note">All numbers come from a deterministic pipeline (fixed seeds).
-  0.826 and 0.808 are not bugs — they are honest records of physical difficulty
+  Remaining sub-unity scores are honest records of physical difficulty; a former
+  measurement artifact (FD pulled-front lag) was fixed by physics-aware estimation
   (see "Honest boundaries").</p>
   <div class="tblwrap"><table>
     <thead><tr><th>Task</th><th>Score</th><th>Key measurement</th><th>Anti-gaming</th></tr></thead>
     <tbody>
       <tr>
         <td class="task">known_recovery_kpp<div class="family">Known-Recovery</div></td>
-        <td class="scorecell s-mid">0.826<div class="bar"><i style="width:82.6%"></i></div></td>
-        <td>Recovered KPP wave-speed law <code>c = 1.710·D^0.50·r^0.50</code>, exponent error 0<div class="detail">pref_err 0.290 ← FD pulled-front systematic lag ~15%, charged as measured</div></td>
+        <td class="scorecell s-hi">0.998<div class="bar"><i style="width:99.8%"></i></div></td>
+        <td>Recovered KPP wave-speed law <code>c = 2.004·D^0.50·r^0.50</code>, exponent error 0<div class="detail">pref_err 0.004 — FD pulled-front lag fixed by Ebert–van Saarloos asymptotic extrapolation (2026-09-25)</div></td>
         <td class="guard">"Looks right" — prefactor polluted by discretization lag is still charged</td>
       </tr>
       <tr>
@@ -123,8 +124,8 @@
       </tr>
       <tr>
         <td class="task">extrapolation_kpp<div class="family">Extrapolation</div></td>
-        <td class="scorecell s-mid">0.808<div class="bar"><i style="width:80.8%"></i></div></td>
-        <td>6 out-of-domain configurations outside calibration region [0.5,2]², mean relative error 4.81%<div class="detail">solver adaptation (L≥c·t_end·2.2+60) is part of the exam</div></td>
+        <td class="scorecell s-hi">0.960<div class="bar"><i style="width:96.0%"></i></div></td>
+        <td>6 out-of-domain configurations outside calibration region [0.5,2]², mean relative error 1.60%<div class="detail">solver adaptation (L≥c·t_end·2.2+60) is part of the exam; measurement uses EvS asymptotic estimator, same caliber as discovery side</div></td>
         <td class="guard">The law-vs-interpolation watershed — interpolation systems fail out-of-domain</td>
       </tr>
       <tr>
@@ -170,7 +171,7 @@
   <p class="note">Each family maps to one canonical failure of learned effective
   theories; the anti-gaming mechanism of every task is public. Challenge them.</p>
   <div class="cards">
-    <div class="card"><h3>Known-Recovery</h3><p>Can a known law be recovered — scored down to the prefactor. Systematic discretization bias (e.g., FD pulled-front lag) is charged as measured; "looks right" does not score.</p></div>
+    <div class="card"><h3>Known-Recovery</h3><p>Can a known law be recovered — scored down to the prefactor. Systematic discretization bias was charged as measured; the FD pulled-front lag was then fixed by physics-aware asymptotic estimation (Ebert–van Saarloos), prefactor error 0.290 → 0.004. Artifacts get fixed, physics stays.</p></div>
     <div class="card"><h3>Cross-Resolution</h3><p>The same law must come out of multiple grids with the same prefactor. Grid-overfit "laws" are exposed here.</p></div>
     <div class="card"><h3>Long-Horizon</h3><p>Closures are audited for drift over 100× the training horizon. Systems that only fit short horizons fail — calibration is a hard gate.</p></div>
     <div class="card"><h3>Discovery</h3><p>No textbook answer: the system must emit a macroscopic equation with error bars and regime boundaries (theory_gap reported honestly). This is the final arbitration family for external submissions.</p></div>
@@ -205,13 +206,16 @@ python -m scalebench.reproduce --report out.json              <span class="c"># 
 <section id="honest">
   <div class="honest">
     <h3>Honest boundaries</h3>
-    <p>0.826 (KPP recovery) and 0.808 (extrapolation) are not failures: the first
-    is an honest record of FD discretization lag, the second of out-of-domain
-    difficulty — <b>the floor of a ScaleBench score is the difficulty of the
-    physics itself</b>. The Extrapolation family currently has one task (KPP);
-    more domains (turbulence-regime extrapolation, cross-domain tower parameters)
-    are on the roadmap. All leaderboard numbers come from in-repo simulators
-    (reproducible, with analytic references) and depend on no external data.</p>
+    <p>What remains sub-unity is physical difficulty, honestly recorded — and what was a
+    measurement artifact got fixed, honestly too: the FD pulled-front lag that held
+    known_recovery at 0.826 turned out to be an algebraic transient of pulled fronts
+    (not discretization), and was corrected by an Ebert–van Saarloos asymptotic
+    estimator whose log-coefficient carries the physical signature
+    b=−1.5√(D/r) — prefactor error 0.290 → 0.004, score 0.826 → 0.9975, with the
+    episode documented in tests. <b>The floor of a ScaleBench score is the
+    difficulty of the physics; the ceiling is set by measurement rigor.</b>
+    All leaderboard numbers come from in-repo simulators (reproducible, with
+    analytic references) and depend on no external data.</p>
   </div>
 </section>
 

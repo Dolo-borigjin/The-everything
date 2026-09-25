@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ScaleBench v1.3 — 自动重整化公开基准 · LSWM/ARM</title>
-<meta name="description" content="ScaleBench：测机器能否自己发现宏观定律并诚实给出误差界。9 题榜单 overall 0.9556，防刷分是设计目标。">
+<meta name="description" content="ScaleBench：测机器能否自己发现宏观定律并诚实给出误差界。9 题榜单 overall 0.9917，防刷分是设计目标。">
 <style>
   :root{
     --bg:#0b0e14; --panel:#121722; --panel2:#171e2c; --line:#232c3f;
@@ -73,7 +73,7 @@
   并<b>诚实地</b>给出适用边界与误差界。防刷分是设计目标，不是事后补丁。
   榜单唯一准绳：<code>leaderboard.json</code>；复现仲裁脚本：<code>reproduce.py</code>。</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num">0.9556</div><div class="lbl">OVERALL（9 题均值）</div></div>
+    <div class="stat"><div class="num">0.9917</div><div class="lbl">OVERALL（9 题均值）</div></div>
     <div class="stat"><div class="num">9</div><div class="lbl">考题 · 6 任务族</div></div>
     <div class="stat"><div class="num">4 / 9</div><div class="lbl">满分题</div></div>
     <div class="stat"><div class="num">±0.02</div><div class="lbl">复现仲裁容差</div></div>
@@ -82,14 +82,15 @@
 
 <section id="board">
   <h2>榜单</h2>
-  <p class="note">全部数字来自确定性管线（种子固定）。0.826 与 0.808 不是 bug——是物理难度的如实记录（见「诚实边界」）。</p>
+  <p class="note">全部数字来自确定性管线（种子固定）。未满分的题是物理难度的如实记录；
+  曾经的测量伪影（FD 拉拽前锋滞后）已由物理感知估计修正（见「诚实边界」）。</p>
   <div class="tblwrap"><table>
     <thead><tr><th>考题</th><th>得分</th><th>关键实测</th><th>防什么</th></tr></thead>
     <tbody>
       <tr>
         <td class="task">known_recovery_kpp<div class="family">Known-Recovery</div></td>
-        <td class="scorecell s-mid">0.826<div class="bar"><i style="width:82.6%"></i></div></td>
-        <td>恢复 KPP 行波律 <code>c = 1.710·D^0.50·r^0.50</code>，指数误差 0<div class="detail">pref_err 0.290 ← FD 拉拽前锋系统性滞后 ~15%，如实扣分</div></td>
+        <td class="scorecell s-hi">0.998<div class="bar"><i style="width:99.8%"></i></div></td>
+        <td>恢复 KPP 行波律 <code>c = 2.004·D^0.50·r^0.50</code>，指数误差 0<div class="detail">pref_err 0.004——FD 拉拽前锋滞后已由 Ebert–van Saarloos 渐近外推修复（2026-09-25）</div></td>
         <td class="guard">「看起来对」——系数被离散滞后污染时照扣分</td>
       </tr>
       <tr>
@@ -118,8 +119,8 @@
       </tr>
       <tr>
         <td class="task">extrapolation_kpp<div class="family">Extrapolation</div></td>
-        <td class="scorecell s-mid">0.808<div class="bar"><i style="width:80.8%"></i></div></td>
-        <td>校准域 [0.5,2]² 外 6 配置对拍，平均相对误差 4.81%<div class="detail">求解器自适应（L≥c·t_end·2.2+60）是考题内容的一部分</div></td>
+        <td class="scorecell s-hi">0.960<div class="bar"><i style="width:96.0%"></i></div></td>
+        <td>校准域 [0.5,2]² 外 6 配置对拍，平均相对误差 1.60%<div class="detail">求解器自适应（L≥c·t_end·2.2+60）是考题内容的一部分；测量与发现侧同口径 EvS 渐近估计</div></td>
         <td class="guard">定律 vs 插值的分水岭——域外插值系统必败</td>
       </tr>
       <tr>
@@ -197,9 +198,11 @@ python -m scalebench.reproduce --report out.json              <span class="c"># 
 <section id="honest">
   <div class="honest">
     <h3>诚实边界</h3>
-    <p>0.826（KPP 恢复）与 0.808（外推）不是失败：前者是 FD 离散滞后的如实记录，
-    后者是域外难度的如实记录——<b>ScaleBench 的分数下限就是物理本身的难度</b>。
-    Extrapolation 族目前只有 KPP 一题，更多域（湍流区制外推、跨域塔参数）在路线图上。
+    <p>未满分的题是物理难度的如实记录——而曾经的测量伪影也被同样诚实地修复：
+    把 known_recovery 压在 0.826 的 FD 拉拽前锋滞后，归因结果是 pulled front 的
+    代数暂态（不是离散误差），用 Ebert–van Saarloos 渐近估计量修正，其对数系数
+    带物理签名 b=−1.5√(D/r)——系数误差 0.290 → 0.004，得分 0.826 → 0.998，
+    事件全程入测试档案。<b>分数的下限是物理本身的难度，上限由测量严谨度决定</b>。
     榜单全部数字来自仓库内模拟器（可复现、带解析参考），不依赖外部数据。</p>
   </div>
 </section>
