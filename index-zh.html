@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScaleBench v1.3 — 自动重整化公开基准 · LSWM/ARM</title>
-<meta name="description" content="ScaleBench：测机器能否自己发现宏观定律并诚实给出误差界。9 题榜单 overall 0.9917，防刷分是设计目标。">
+<title>ScaleBench v1.4 — 自动重整化公开基准 · LSWM/ARM</title>
+<meta name="description" content="ScaleBench：测机器能否自己发现宏观定律并诚实给出误差界。10 题榜单 overall 0.9925，防刷分是设计目标。">
 <style>
   :root{
     --bg:#0b0e14; --panel:#121722; --panel2:#171e2c; --line:#232c3f;
@@ -68,12 +68,12 @@
 
 <header class="hero">
   <div class="kicker">LSWM / ARM · Public Benchmark · <a href="./index.html">English</a></div>
-  <h1>ScaleBench<span class="v">v1.3</span></h1>
+  <h1>ScaleBench<span class="v">v1.4</span></h1>
   <p class="sub">测的是<b>自动重整化</b>：给定微观模拟器，机器能否自己发现宏观定律，
   并<b>诚实地</b>给出适用边界与误差界。防刷分是设计目标，不是事后补丁。
   榜单唯一准绳：<code>leaderboard.json</code>；复现仲裁脚本：<code>reproduce.py</code>。</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num">0.9917</div><div class="lbl">OVERALL（9 题均值）</div></div>
+    <div class="stat"><div class="num">0.9925</div><div class="lbl">OVERALL（10 题均值）</div></div>
     <div class="stat"><div class="num">9</div><div class="lbl">考题 · 6 任务族</div></div>
     <div class="stat"><div class="num">4 / 9</div><div class="lbl">满分题</div></div>
     <div class="stat"><div class="num">±0.02</div><div class="lbl">复现仲裁容差</div></div>
@@ -140,6 +140,12 @@
         <td class="scorecell s-hi">0.997<div class="bar"><i style="width:99.7%"></i></div></td>
         <td>攻击率跨 ε∈{0.01…1.0} collapse（spread 0.0049，对拍解析解偏差 0.34%）；峰高 0.70×/峰时 1.52× 被判为非不变量<div class="detail">异质混合粗粒化：什么幸存、什么被抹掉——个体→宏观 rung 成题</div></td>
         <td class="guard">把随结构变化的量谎报为「普适定律」</td>
+      </tr>
+      <tr>
+        <td class="task">closure_rescue_sir<div class="family">Long-Horizon · 闭合救援</div></td>
+        <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
+        <td>SPSA 目标改进 58.8%；held-out 救援幅度 23.6%（对自由演变）；提交误差 2.64× 神谕上界（自报）<div class="detail">在线微调救援 + 表示层上界诚实——MLP rollout 灭疫对照案在题注固化</div></td>
+        <td class="guard">单步好看但 rollout 灭失的离线闭合；不报与表示层天花板的距离</td>
       </tr>
     </tbody>
   </table></div>
@@ -209,7 +215,7 @@ python -m scalebench.reproduce --report out.json              <span class="c"># 
 
 <footer>
   <div>ScaleBench 是 LSWM 世界模型的裁判权组件（白皮书 §6）。治理：基准与理论卡格式开源——用开放换标准地位。</div>
-  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index.html">English</a> · v1.3 · 2026-09</div>
+  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index.html">English</a> · v1.4 · 2026-09</div>
 </footer>
 
 </div>
