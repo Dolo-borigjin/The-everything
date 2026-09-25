@@ -2,7 +2,7 @@
 
 > **测的是"自动重整化"**：给定微观模拟器，机器能否自己发现宏观定律、
 > 并诚实地给出适用边界与误差界。防刷分是设计目标，不是事后补丁。
-> 榜单唯一准绳：`leaderboard.json`（当前 overall **0.9917**，9 题）。
+> 榜单唯一准绳：`leaderboard.json`（当前 overall **0.9556**，9 题）。
 
 ## 这是什么
 
@@ -14,12 +14,12 @@ ScaleBench 是 LSWM/ARM 项目的公开基准。五个任务族对应"自动发�
 
 | 任务族 | 考题 | 得分 | 防什么 |
 |---|---|---|---|
-| Known-Recovery | `known_recovery_kpp`：恢复 KPP 行波律 c=2√(rD) | 0.998 | "看起来对"——系数误差曾被 FD 滞后压到 0.290；EvS 渐近外推修复后 0.004 |
+| Known-Recovery | `known_recovery_kpp`：恢复 KPP 行波律 c=2√(rD) | 0.826 | "看起来对"——系数被 FD 系统性滞后如实扣分 |
 | Cross-Resolution | `cross_resolution_kpp`：3 种网格同一宏观律 | 1.000 | 过拟合网格 |
 | Long-Horizon | `longhorizon_closure_drift`：闭合 100× 视界漂移审计 | 1.000 | 短程拟合（未标定闭合必然低分） |
 | Discovery | `spectrum_law_turb2d`：湍流有效谱斜率 + 双级联 | 1.000 | 教科书复读——评 regime 定律与 theory_gap |
 | Discovery | `m3_partition_law`：跨域塔分配律 γ（审计账发现） | 0.976 | 闭式代案——发现数据取自守恒审计账 |
-| Extrapolation | `extrapolation_kpp`：校准域外 6 配置对拍 | 0.960 | 定律 vs 插值的分水岭；求解器适配 + EvS 渐近测量同口径 |
+| Extrapolation | `extrapolation_kpp`：校准域外 6 配置对拍 | 0.808 | 定律 vs 插值的分水岭；求解器适配是考题内容 |
 | Discovery | `nis_prune_consistency`：NIS 剪枝维度一致性 | 1.000 | 几何给定宏观态——k 由数据定，序参量可重构 |
 | Discovery（混沌审计） | `chaos_audit_gate`：混沌指标验收门 | 0.994 | 混沌约束进验收（Lyapunov/吸引子距离卡指标化） |
 | Discovery（RG 不变量） | `rg_invariant_sir`：异质混合粗粒化不变量判定 | 0.997 | 攻击率 ε-collapse 对拍解析解；峰压峰时判为非不变量 |
@@ -48,10 +48,8 @@ python -m scalebench.reproduce --report out.json              # 另存比对报�
 ## 诚实边界
 
 - 榜单全部数字来自确定性管线（种子固定），跨平台微小浮点差由容差吸收；
-- 未满分的题是物理难度的如实记录；而曾经的测量伪影也被同样诚实地修复：
-  KPP 题的 FD 拉拽前锋滞后（曾压到 0.826）归因结果是 pulled front 代数暂态
-  （不是离散误差），用 Ebert–van Saarloos 渐近估计量修正——系数误差
-  0.290 → 0.004，得分 0.826 → 0.998（2026-09-25，事件全程入测试档案）；
+- 0.826（KPP）与 0.808（外推）不是失败：前者是 FD 离散滞后的如实记录，
+  后者是域外难度的如实记录——ScaleBench 的分数下限就是物理本身的难度；
 - Extrapolation 族目前只有 KPP 一题，更多域（湍流区制外推、跨域塔参数）
   在路线图上。
 

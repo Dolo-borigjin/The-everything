@@ -1,25 +1,25 @@
 {
   "bench": "ScaleBench",
   "version": "0.1",
-  "generated_at": 1790328178.4642618,
-  "overall": 0.9916503318965224,
+  "generated_at": 1790168213.7770638,
+  "overall": 0.9556263926758503,
   "tasks": [
     {
       "task": "known_recovery_kpp",
-      "score": 0.9975,
+      "score": 0.8259,
       "details": {
-        "law": "c = 2.004·D^0.50·r^0.50",
+        "law": "c = 1.710·D^0.50·r^0.50",
         "exp_err": 0.0,
-        "pref_err": 0.0042,
-        "estimator": "Ebert-vanSaarloos asymptotic extrapolation (fixes fd_pulled_front_lag)",
-        "bic_top": "c = 2.004·D^0.50·r^0.50",
+        "pref_err": 0.2901,
+        "systematic_bias": "fd_pulled_front_lag ~15%",
+        "bic_top": "c = 1.710·D^0.50·r^0.50",
         "speeds": [
-          2.001,
-          2.838,
-          1.425,
-          2.798,
-          1.443,
-          3.967
+          1.704,
+          2.416,
+          1.208,
+          2.568,
+          1.08,
+          3.624
         ]
       }
     },
@@ -83,19 +83,19 @@
     },
     {
       "task": "extrapolation_kpp",
-      "score": 0.9601,
+      "score": 0.8075,
       "details": {
-        "mean_rel_err": 0.01,
+        "mean_rel_err": 0.0481,
         "per_config_rel_err": {
-          "3.0|3.0": 0.0157,
-          "4.0|1.0": 0.0049,
-          "1.0|4.0": 0.0247,
-          "0.25|1.0": 0.0031,
-          "1.0|0.25": 0.0077,
-          "0.3|0.3": 0.0036
+          "3.0|3.0": 0.0804,
+          "4.0|1.0": 0.0016,
+          "1.0|4.0": 0.083,
+          "0.25|1.0": 0.0932,
+          "1.0|0.25": 0.0297,
+          "0.3|0.3": 0.0009
         },
-        "law": "c = 2.004·D^0.50·r^0.50（校准域 [0.5,2]²）",
-        "solver_adaptation": "L≥c·t_end·2.2+60；慢前锋 t_end=80（防边界/瞬态伪影）；测速=EvS 渐近外推（2026-09-25 与发现侧同口径）"
+        "law": "c = 1.710·D^0.50·r^0.50（校准域 [0.5,2]²）",
+        "solver_adaptation": "L≥c·t_end·2.2+60；慢前锋 t_end=80（防边界/瞬态伪影）"
       }
     },
     {
