@@ -1,8 +1,8 @@
 {
   "bench": "ScaleBench",
   "version": "0.1",
-  "generated_at": 1790411549.0775318,
-  "overall": 0.9919879561703973,
+  "generated_at": 1790411689.054297,
+  "overall": 0.9925602450153689,
   "tasks": [
     {
       "task": "known_recovery_kpp",
@@ -221,6 +221,18 @@
         ],
         "gate_params": "gate=0.1, p0=1e3（扫描定型）",
         "gate_note": "无门 RLS 在 ts=2 −1.9×（残差平静期常适应=噪声放大器，2026-09-26 定罪）——门控是适应协议的必要组件"
+      }
+    },
+    {
+      "task": "growth_protocol_eco",
+      "score": 1.0,
+      "details": {
+        "least_privilege": true,
+        "shadow_discipline": true,
+        "human_review_gate": true,
+        "discoverability": true,
+        "module": "ext.salt_intrusion",
+        "final_state": "coupled"
       }
     }
   ]

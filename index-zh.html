@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScaleBench v1.7 — 自动重整化公开基准 · LSWM/ARM</title>
-<meta name="description" content="ScaleBench：测机器能否自己发现宏观定律并诚实给出误差界。13 题榜单 overall 0.9920，防刷分是设计目标。">
+<title>ScaleBench v1.8 — 自动重整化公开基准 · LSWM/ARM</title>
+<meta name="description" content="ScaleBench：测机器能否自己发现宏观定律并诚实给出误差界。14 题榜单 overall 0.9926，防刷分是设计目标。">
 <style>
   :root{
     --bg:#0b0e14; --panel:#121722; --panel2:#171e2c; --line:#232c3f;
@@ -68,12 +68,12 @@
 
 <header class="hero">
   <div class="kicker">LSWM / ARM · Public Benchmark · <a href="./index.html">English</a></div>
-  <h1>ScaleBench<span class="v">v1.7</span></h1>
+  <h1>ScaleBench<span class="v">v1.8</span></h1>
   <p class="sub">测的是<b>自动重整化</b>：给定微观模拟器，机器能否自己发现宏观定律，
   并<b>诚实地</b>给出适用边界与误差界。防刷分是设计目标，不是事后补丁。
   榜单唯一准绳：<code>leaderboard.json</code>；复现仲裁脚本：<code>reproduce.py</code>。</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num">0.9920</div><div class="lbl">OVERALL（13 题均值）</div></div>
+    <div class="stat"><div class="num">0.9926</div><div class="lbl">OVERALL（14 题均值）</div></div>
     <div class="stat"><div class="num">13</div><div class="lbl">考题 · 6 任务族</div></div>
     <div class="stat"><div class="num">7 / 13</div><div class="lbl">满分题</div></div>
     <div class="stat"><div class="num">±0.02</div><div class="lbl">复现仲裁容差</div></div>
@@ -165,6 +165,12 @@
         <td>多切换点族（ts=2/3/4）：门控 RLS 族平均改善 38.1%、最差 0.0%（残差平静期门不开）；无门 RLS 把 ts=2 改坏 −1.9 倍<div class="detail">适应必须证据放行：平静期常适应=噪声放大——门是协议组件不是装饰</div></td>
         <td class="guard">常开适应（改坏好闭合）；切换点空洞；族内最差情况不上报</td>
       </tr>
+      <tr>
+        <td class="task">growth_protocol_eco<div class="family">Ecosystem · 生长协议</div></td>
+        <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
+        <td>第三方器官五态：越权写入被拒、影子期输出不落地、人审门双向、生态目录可发现——4/4 纪律<div class="detail">生态题族首题：生长协议成题而非承诺</div></td>
+        <td class="guard">第三方模块自证合规；影子期静默落库</td>
+      </tr>
     </tbody>
   </table></div>
 </section>
@@ -233,7 +239,7 @@ python -m scalebench.reproduce --report out.json              <span class="c"># 
 
 <footer>
   <div>ScaleBench 是 LSWM 世界模型的裁判权组件（白皮书 §6）。治理：基准与理论卡格式开源——用开放换标准地位。</div>
-  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index.html">English</a> · v1.7 · 2026-09</div>
+  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index.html">English</a> · v1.8 · 2026-09</div>
 </footer>
 
 </div>

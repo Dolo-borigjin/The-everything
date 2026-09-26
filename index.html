@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScaleBench v1.7 — Public Benchmark for Auto-Renormalization · LSWM/ARM</title>
-<meta name="description" content="ScaleBench: can a machine discover macroscopic laws from a microscopic simulator and honestly report error bars? 13-task leaderboard, overall 0.9920. Anti-gaming by design.">
+<title>ScaleBench v1.8 — Public Benchmark for Auto-Renormalization · LSWM/ARM</title>
+<meta name="description" content="ScaleBench: can a machine discover macroscopic laws from a microscopic simulator and honestly report error bars? 14-task leaderboard, overall 0.9926. Anti-gaming by design.">
 <style>
   :root{
     --bg:#0b0e14; --panel:#121722; --panel2:#171e2c; --line:#232c3f;
@@ -69,14 +69,14 @@
 
 <header class="hero">
   <div class="kicker">LSWM / ARM · Public Benchmark <span class="lang"><a href="./index-zh.html">中文版</a></span></div>
-  <h1>ScaleBench<span class="v">v1.7</span></h1>
+  <h1>ScaleBench<span class="v">v1.8</span></h1>
   <p class="sub">A benchmark for <b>auto-renormalization</b>: given a microscopic
   simulator, can a machine discover macroscopic effective laws — and report their
   validity boundaries and error bars <b>honestly</b>? Anti-gaming is a design
   goal, not a patch. Single source of truth: <code>leaderboard.json</code>;
   executable arbitration: <code>reproduce.py</code>.</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num">0.9920</div><div class="lbl">OVERALL (mean of 13)</div></div>
+    <div class="stat"><div class="num">0.9926</div><div class="lbl">OVERALL (mean of 14)</div></div>
     <div class="stat"><div class="num">13</div><div class="lbl">TASKS · 6 FAMILIES</div></div>
     <div class="stat"><div class="num">7 / 13</div><div class="lbl">PERFECT SCORES</div></div>
     <div class="stat"><div class="num">±0.02</div><div class="lbl">REPRODUCTION TOLERANCE</div></div>
@@ -170,6 +170,12 @@
         <td>Switch-point family (ts=2/3/4): gated-RLS mean improvement 38.1%, worst-case 0.0% (gate never opens when residuals are calm); ungated RLS wrecks the ts=2 case −1.9×<div class="detail">adaptation must be evidence-gated: adapting in a calm-residual regime is noise amplification — the gate is part of the protocol, not an accessory</div></td>
         <td class="guard">Always-on adaptation (hurts good closures); switch-point vacuity; unreported worst case over the family</td>
       </tr>
+      <tr>
+        <td class="task">growth_protocol_eco<div class="family">Ecosystem · 生长协议</div></td>
+        <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
+        <td>Third-party organ lifecycle: least-privilege write denied, shadow output not landed, human-review gate enforced, catalogue discoverable — 4/4 disciplines<div class="detail">ecosystem task family opener: growth protocol as exam, not promise</div></td>
+        <td class="guard">Self-certified third-party modules; silent shadow landing</td>
+      </tr>
     </tbody>
   </table></div>
 </section>
@@ -247,7 +253,7 @@ python -m scalebench.reproduce --report out.json              <span class="c"># 
   <div>ScaleBench is the adjudication component of the LSWM world model
   (whitepaper §6). Governance: benchmark and theory-card formats are open —
   openness in exchange for standard status.</div>
-  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index-zh.html">中文版</a> · v1.7 · 2026-09</div>
+  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index-zh.html">中文版</a> · v1.8 · 2026-09</div>
 </footer>
 
 </div>
