@@ -165,7 +165,7 @@
 <!-- MEASURED:BEGIN -->
 <section id="measured">
   <h2>Measured baselines (AIFS comparison · rolling)</h2>
-  <p class="note">Source: <code>data/aifs/baseline_measured.json</code> (111 measurements). Truth caliber = <b>AIFS's own 0h field</b> (self-consistency — consistency with its own analysis frame, not independent-observation accuracy); multi-run leads show mean [spread, n] — run-to-run spread is itself reading discipline. Precipitation ETS: one cross-year mispaired record was retracted (RETRACTED, evidence retained); first valid sample landed 2026-09-24 (AIFS +24h × ERA5, PRD window: ETS 0.712/0.241/1.0/1.0 at 0.1/1/5/10 mm; N=1, no verdict yet — stream accumulates daily); </p>
+  <p class="note">Source: <code>data/aifs/baseline_measured.json</code> (111 measurements). Truth caliber = <b>AIFS's own 0h field</b> (self-consistency — consistency with its own analysis frame, not independent-observation accuracy); multi-run leads show mean [spread, n] — run-to-run spread is itself reading discipline. Precipitation ETS: one cross-year mispaired record was retracted (RETRACTED, evidence retained); valid samples N=3 strict (2026-09-26: +24h × ERA5 PRD window, ETS@0.1mm 0.712/0.495/0.691; +1 reference sample 0.830 flagged caliber-suspect pending adjudication; one ~23h-offset record retracted — ERA5 daily files are accumulation-ending, same-day pairing ±1h is the strict caliber); </p>
   <div class="tblwrap"><table>
     <thead><tr><th>Lead</th><th>z500 RMSE global<br>(m²/s²)</th>
     <th>z500 PRD</th><th>MSL RMSE global<br>(Pa)</th><th>MSL PRD</th></tr></thead>
@@ -174,7 +174,7 @@
     </tbody>
   </table></div>
   <p class='note'>Lagged-ensemble CRPS (PRD window, valid 20260925 00z, n=6 records): msl: CRPS 5.48（M=4，s/s=1.23）；z: CRPS 16.03（M=4，s/s=0.32）. Caliber: members are same-model recent runs (lagged ensemble), systematically under-dispersive — not AIFS-ENS (ENS absent from the open store, 404 on record)</p>
-  <p class="note">Generated: 2026-09-26 12:20 （update_measured.py idempotent rolling update）· per-file sha256 manifest traces byte-level provenance</p>
+  <p class="note">Generated: 2026-09-26 12:25 （update_measured.py idempotent rolling update）· per-file sha256 manifest traces byte-level provenance</p>
 </section>
 <!-- MEASURED:END -->
 

@@ -160,7 +160,7 @@
 <!-- MEASURED:BEGIN -->
 <section id="measured">
   <h2>实测基线（AIFS 对拍 · 滚动更新）</h2>
-  <p class="note">数据源：<code>data/aifs/baseline_measured.json</code>（111 条实测）。 真值口径 = <b>AIFS 自身 0h 场</b>（自洽性技巧——答「预报与自身分析帧的一致性」，非独立观测绝对精度）；多 run 时效给 均值 [散布, 样本数]——run 间散布本身就是读数纪律。降水 ETS：一条跨年份错配记录已撤回（RETRACTED，证据保留）；首个有效样本已落地（2026-09-24：AIFS +24h × ERA5 珠江口窗，ETS 0.712/0.241/1.0/1.0 @ 0.1/1/5/10mm；N=1 不下判决，样本逐日累积）；</p>
+  <p class="note">数据源：<code>data/aifs/baseline_measured.json</code>（111 条实测）。 真值口径 = <b>AIFS 自身 0h 场</b>（自洽性技巧——答「预报与自身分析帧的一致性」，非独立观测绝对精度）；多 run 时效给 均值 [散布, 样本数]——run 间散布本身就是读数纪律。降水 ETS：一条跨年份错配记录已撤回（RETRACTED，证据保留）；有效样本 N=3 严格口径（2026-09-26：AIFS +24h × ERA5 珠江口窗，ETS@0.1mm = 0.712/0.495/0.691；另有参考样本 0.830 标口径存疑待裁决；一条 ~23h 偏移记录已撤回——ERA5 日文件为累计结束口径，同日配对 ±1h 为严格口径）；</p>
   <div class="tblwrap"><table>
     <thead><tr><th>时效</th><th>z500 RMSE 全球<br>(m²/s²)</th>
     <th>z500 珠江口</th><th>msl RMSE 全球<br>(Pa)</th><th>msl 珠江口</th></tr></thead>
@@ -169,7 +169,7 @@
     </tbody>
   </table></div>
   <p class='note'>滞后集合 CRPS（珠江口窗，valid 20260925 00z，n=6 条）：msl: CRPS 5.48（M=4，s/s=1.23）；z: CRPS 16.03（M=4，s/s=0.32）。口径：同模式近邻 run 为成员，离散度系统性偏小——非 AIFS-ENS（开放商店无 ENS，实测 404 在案）</p>
-  <p class="note">生成：2026-09-26 12:20 （update_measured.py 幂等滚动更新）· 档案每文件 sha256 清单可回查字节级来源</p>
+  <p class="note">生成：2026-09-26 12:25 （update_measured.py 幂等滚动更新）· 档案每文件 sha256 清单可回查字节级来源</p>
 </section>
 <!-- MEASURED:END -->
 
