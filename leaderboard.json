@@ -1,8 +1,8 @@
 {
   "bench": "ScaleBench",
   "version": "0.1",
-  "generated_at": 1790411689.054297,
-  "overall": 0.9925602450153689,
+  "generated_at": 1790432016.662438,
+  "overall": 0.9931016346799938,
   "tasks": [
     {
       "task": "known_recovery_kpp",
@@ -199,6 +199,25 @@
       }
     },
     {
+      "task": "eniac_recreation",
+      "score": 1.0,
+      "details": {
+        "v1_dispersion": {
+          "phase_err": 8.107825522074563e-11,
+          "tol": 0.00084005175168,
+          "pass": true
+        },
+        "v2_steady": {
+          "drift": 2.4431838769279154e-15,
+          "pass": true
+        },
+        "v3_convergence": {
+          "rel_diff": 2.4975427118721056e-15,
+          "pass": true
+        }
+      }
+    },
+    {
       "task": "regime_shift_adaptation",
       "score": 1.0,
       "details": {
@@ -233,6 +252,35 @@
         "discoverability": true,
         "module": "ext.salt_intrusion",
         "final_state": "coupled"
+      }
+    },
+    {
+      "task": "qg2_modal_growth",
+      "score": 0.9869,
+      "details": {
+        "max_growth_rate": 1.1189694744852692e-05,
+        "dominant_m": 3,
+        "integrated_ratio": 0.955,
+        "barotropic_control": 9.461650904311151e-20,
+        "shear_monotone": [
+          1.2e-06,
+          1.119e-05
+        ],
+        "convention_note": "谱管线 real-FFT 实化约定：复单边基特征值虚低 2×（实场基 ±m 同置才是正确口径）——拍频伪影案与约定案双定罪进注"
+      }
+    },
+    {
+      "task": "decision_tiers_sir",
+      "score": 1.0,
+      "details": {
+        "T1_preemptive": 0.4153,
+        "T2_reactive_best": 0.6271,
+        "T3_feedback_deployed": 0.9033,
+        "forecast_value": 0.2118,
+        "feedback_optimization_gain": 0.0334,
+        "mpc_adaptive": 0.8729,
+        "mpc_fixed": 0.9033,
+        "caliber_note": "时长计费（活跃窗）；终态口径与仿真口径双轨——临界慢燃重罚是物理（2026-09-26 定罪链）"
       }
     }
   ]
