@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScaleBench v1.8 — Public Benchmark for Auto-Renormalization · LSWM/ARM</title>
+<title>ScaleBench v1.9 — Public Benchmark for Auto-Renormalization · LSWM/ARM</title>
 <meta name="description" content="ScaleBench: can a machine discover macroscopic laws from a microscopic simulator and honestly report error bars? 14-task leaderboard, overall 0.9926. Anti-gaming by design.">
 <style>
   :root{
@@ -69,16 +69,16 @@
 
 <header class="hero">
   <div class="kicker">LSWM / ARM · Public Benchmark <span class="lang"><a href="./index-zh.html">中文版</a></span></div>
-  <h1>ScaleBench<span class="v">v1.8</span></h1>
+  <h1>ScaleBench<span class="v">v1.9</span></h1>
   <p class="sub">A benchmark for <b>auto-renormalization</b>: given a microscopic
   simulator, can a machine discover macroscopic effective laws — and report their
   validity boundaries and error bars <b>honestly</b>? Anti-gaming is a design
   goal, not a patch. Single source of truth: <code>leaderboard.json</code>;
   executable arbitration: <code>reproduce.py</code>.</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num">0.9926</div><div class="lbl">OVERALL (mean of 14)</div></div>
-    <div class="stat"><div class="num">13</div><div class="lbl">TASKS · 6 FAMILIES</div></div>
-    <div class="stat"><div class="num">7 / 13</div><div class="lbl">PERFECT SCORES</div></div>
+    <div class="stat"><div class="num">0.9930</div><div class="lbl">OVERALL (mean of 16)</div></div>
+    <div class="stat"><div class="num">16</div><div class="lbl">TASKS · 7 FAMILIES</div></div>
+    <div class="stat"><div class="num">9 / 16</div><div class="lbl">PERFECT SCORES</div></div>
     <div class="stat"><div class="num">±0.02</div><div class="lbl">REPRODUCTION TOLERANCE</div></div>
   </div>
 </header>
@@ -176,6 +176,18 @@
         <td>Third-party organ lifecycle: least-privilege write denied, shadow output not landed, human-review gate enforced, catalogue discoverable — 4/4 disciplines<div class="detail">ecosystem task family opener: growth protocol as exam, not promise</div></td>
         <td class="guard">Self-certified third-party modules; silent shadow landing</td>
       </tr>
+      <tr>
+        <td class="task">eniac_recreation<div class="family">Known-Recovery · ENIAC 复刻</div></td>
+        <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
+        <td>ENIAC 1950 复刻三口径：V1 Rossby 频散逐位对拍、V2 定常流守恒、V3 谱收敛（分辨率加倍场差 &lt;1e-4，99.99 纪律）<div class="detail">历史上第一个数值天气预报的端到端复刻，三口径全过</div></td>
+        <td class="guard">单口径"差不多"通过；分辨率加一倍就散架的伪收敛</td>
+      </tr>
+      <tr>
+        <td class="task">qg2_modal_growth<div class="family">Discovery · 斜压不稳定</div></td>
+        <td class="scorecell s-hi">0.993<div class="bar"><i style="width:99%"></i></div></td>
+        <td>jet basic state (u≈31 m/s): eigenvalue max Re σ=5.87e-5/s at m=3; eigenmode-seeded integration/eigen ratio 0.927; barotropic control stable; shear-monotone<div class="detail">modal eigenanalysis replaces time-window growth guessing — the beating-artifact and 2×-convention convictions are fixed in the task metadata</div></td>
+        <td class="guard">Time-window "growth" phase artifacts (beating); complex one-sided basis under real-FFT convention (2× low)</td>
+      </tr>
     </tbody>
   </table></div>
 </section>
@@ -192,7 +204,7 @@
     </tbody>
   </table></div>
   <p class='note'>Lagged-ensemble CRPS (PRD window, valid 20260925 00z, n=6 records): msl: CRPS 5.48（M=4，s/s=1.23）；z: CRPS 16.03（M=4，s/s=0.32）. Caliber: members are same-model recent runs (lagged ensemble), systematically under-dispersive — not AIFS-ENS (ENS absent from the open store, 404 on record)</p>
-  <p class="note">Generated: 2026-09-26 14:15 （update_measured.py idempotent rolling update）· per-file sha256 manifest traces byte-level provenance</p>
+  <p class="note">Generated: 2026-09-26 18:25 （update_measured.py idempotent rolling update）· per-file sha256 manifest traces byte-level provenance</p>
 </section>
 <!-- MEASURED:END -->
 
@@ -253,7 +265,7 @@ python -m scalebench.reproduce --report out.json              <span class="c"># 
   <div>ScaleBench is the adjudication component of the LSWM world model
   (whitepaper §6). Governance: benchmark and theory-card formats are open —
   openness in exchange for standard status.</div>
-  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index-zh.html">中文版</a> · v1.8 · 2026-09</div>
+  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index-zh.html">中文版</a> · v1.9 · 2026-09</div>
 </footer>
 
 </div>
