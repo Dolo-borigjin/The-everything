@@ -1,8 +1,8 @@
 {
   "bench": "ScaleBench",
   "version": "0.1",
-  "generated_at": 1790348063.555833,
-  "overall": 0.9924852987068702,
+  "generated_at": 1790388545.633856,
+  "overall": 0.993168453369882,
   "tasks": [
     {
       "task": "known_recovery_kpp",
@@ -161,6 +161,27 @@
         "oracle_ceiling": 0.043,
         "submission_to_oracle_ratio": 2.64,
         "representation_note": "MLP closure dies in rollout (overcorrection compounds); physical form θ₁·i+θ₂·s·i stable — representation is a stability premise"
+      }
+    },
+    {
+      "task": "extrapolation_turb2d",
+      "score": 1.0,
+      "details": {
+        "slope_calibration_nu5e-5": -2.0186,
+        "slope_probes": {
+          "nu_1e-4": -2.1006,
+          "nu_2e-4": -2.2645
+        },
+        "probe_r2": {
+          "nu_1e-4": 0.981,
+          "nu_2e-4": 0.9832
+        },
+        "monotone_steepening": true,
+        "deviation_from_calibration": {
+          "nu_1e-4": -0.082,
+          "nu_2e-4": -0.2459
+        },
+        "regime_note": "interpolation of the calibration value fails out of domain; dissipation-regime dependence must be measured and reported"
       }
     }
   ]

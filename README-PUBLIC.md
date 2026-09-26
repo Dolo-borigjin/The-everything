@@ -1,4 +1,4 @@
-# ScaleBench v1.4 —— ARM 公开基准（裁判权基石）
+# ScaleBench v1.5 —— ARM 公开基准（裁判权基石）
 
 > **测的是"自动重整化"**：给定微观模拟器，机器能否自己发现宏观定律、
 > 并诚实地给出适用边界与误差界。防刷分是设计目标，不是事后补丁。
@@ -24,6 +24,7 @@ ScaleBench 是 LSWM/ARM 项目的公开基准。五个任务族对应"自动发�
 | Discovery（混沌审计） | `chaos_audit_gate`：混沌指标验收门 | 0.994 | 混沌约束进验收（Lyapunov/吸引子距离卡指标化） |
 | Discovery（RG 不变量） | `rg_invariant_sir`：异质混合粗粒化不变量判定 | 0.997 | 攻击率 ε-collapse 对拍解析解；峰压峰时判为非不变量 |
 | Long-Horizon（闭合救援） | `closure_rescue_sir`：在线微调救援判定 | 1.000 | SPSA 目标 −58.8%；held-out 救援 23.6%；表示层上界比 2.64× 自报 |
+| Extrapolation（湍流区制） | `extrapolation_turb2d`：谱律跨耗散区制对拍 | 1.000 | ν×4 斜率 −2.019→−2.265 单调变陡检出；逐探针偏差上报 |
 
 ## 运行与复现
 
