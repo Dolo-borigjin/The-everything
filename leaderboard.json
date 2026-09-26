@@ -1,8 +1,8 @@
 {
   "bench": "ScaleBench",
   "version": "0.1",
-  "generated_at": 1790425562.089341,
-  "overall": 0.993040699329637,
+  "generated_at": 1790411689.054297,
+  "overall": 0.9925602450153689,
   "tasks": [
     {
       "task": "known_recovery_kpp",
@@ -199,25 +199,6 @@
       }
     },
     {
-      "task": "eniac_recreation",
-      "score": 1.0,
-      "details": {
-        "v1_dispersion": {
-          "phase_err": 8.107825522074563e-11,
-          "tol": 0.00084005175168,
-          "pass": true
-        },
-        "v2_steady": {
-          "drift": 1.8178372696634353e-15,
-          "pass": true
-        },
-        "v3_convergence": {
-          "rel_diff": 7.751605363375013e-08,
-          "pass": true
-        }
-      }
-    },
-    {
       "task": "regime_shift_adaptation",
       "score": 1.0,
       "details": {
@@ -252,22 +233,6 @@
         "discoverability": true,
         "module": "ext.salt_intrusion",
         "final_state": "coupled"
-      }
-    },
-    {
-      "task": "qg2_modal_growth",
-      "score": 0.9928,
-      "details": {
-        "max_growth_rate": 5.8657467003733737e-05,
-        "dominant_m": 3,
-        "integrated_ratio": 0.927,
-        "barotropic_control": 3.2526065175269104e-19,
-        "shear_monotone": [
-          2.65e-06,
-          5.866e-05,
-          0.00018175
-        ],
-        "convention_note": "谱管线 real-FFT 实化约定：复单边基特征值虚低 2×（实场基 ±m 同置才是正确口径）——拍频伪影案与约定案双定罪进注"
       }
     }
   ]
