@@ -1,8 +1,8 @@
 {
   "bench": "ScaleBench",
   "version": "0.1",
-  "generated_at": 1790388545.633856,
-  "overall": 0.993168453369882,
+  "generated_at": 1790408892.585593,
+  "overall": 0.9913202858512636,
   "tasks": [
     {
       "task": "known_recovery_kpp",
@@ -182,6 +182,20 @@
           "nu_2e-4": -0.2459
         },
         "regime_note": "interpolation of the calibration value fails out of domain; dissipation-regime dependence must be measured and reported"
+      }
+    },
+    {
+      "task": "closure_switch_rescue_sir",
+      "score": 0.971,
+      "details": {
+        "switch_improvement": 0.867,
+        "loss_adapt_post": 0.643,
+        "loss_frozen_post": 4.8197,
+        "i_switch": 0.2057,
+        "peak_suppression": 0.72,
+        "anti_vacuity_guard": "i_switch>0.02 & peak<0.8×free",
+        "stability_rel_diff": 9.7e-05,
+        "vacuity_note": "切换在峰后 → 后段残差全零、判决空洞（2026-09-26 实测定罪）——考场有效性必须自证"
       }
     }
   ]
