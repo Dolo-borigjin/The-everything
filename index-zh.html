@@ -172,6 +172,12 @@
         <td class="guard">第三方模块自证合规；影子期静默落库</td>
       </tr>
       <tr>
+        <td class="task">decision_tiers_sir<div class="family">Decision · 决策分层</div></td>
+        <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
+        <td>T1 预防 0.415 / T2 最优反应 0.627 / T3 反馈 0.903——预报价值 0.212 定量；自适应 MPC 0.873 vs 固定 0.903（时长计费口径，临界慢燃双轨定罪）<div class="detail">决策层题族：预报对决策值多少钱——对不预报、对反馈控制分别对拍</div></td>
+        <td class="guard">把预报技巧误认为决策价值；终态指标藏慢燃成本</td>
+      </tr>
+      <tr>
         <td class="task">eniac_recreation<div class="family">Known-Recovery · ENIAC 复刻</div></td>
         <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
         <td>ENIAC 1950 复刻三口径：V1 Rossby 频散逐位对拍、V2 定常流守恒、V3 谱收敛（分辨率加倍场差 &lt;1e-4，99.99 纪律）<div class="detail">史上第一个数值天气预报的端到端复刻，三口径全过</div></td>
@@ -196,16 +202,16 @@
 <!-- MEASURED:BEGIN -->
 <section id="measured">
   <h2>实测基线（AIFS 对拍 · 滚动更新）</h2>
-  <p class="note">数据源：<code>data/aifs/baseline_measured.json</code>（133 条实测）。 真值口径 = <b>AIFS 自身 0h 场</b>（自洽性技巧——答「预报与自身分析帧的一致性」，非独立观测绝对精度）；多 run 时效给 均值 [散布, 样本数]——run 间散布本身就是读数纪律。降水 ETS：两条错配记录已撤回（跨年 + ~23h 偏移，RETRACTED 证据保留）；有效样本双池（2026-09-26：AIFS +24h × ERA5 珠江口窗——run 日 ±1h 池 0.712/0.495/0.691（n=3）；逐时精确窗池 0.840/0.735（n=2，12z run）；~23h 偏移与跨年错配各一条已撤回留证；ERA5 日文件为累计结束口径；判决标准 DRAFT-008 待批准；每池 n<5 不下判决）；</p>
+  <p class="note">数据源：<code>data/aifs/baseline_measured.json</code>（135 条实测）。 真值口径 = <b>AIFS 自身 0h 场</b>（自洽性技巧——答「预报与自身分析帧的一致性」，非独立观测绝对精度）；多 run 时效给 均值 [散布, 样本数]——run 间散布本身就是读数纪律。降水 ETS：两条错配记录已撤回（跨年 + ~23h 偏移，RETRACTED 证据保留）；有效样本双池（2026-09-26：AIFS +24h × ERA5 珠江口窗——run 日 ±1h 池 0.712/0.495/0.691（n=3）；逐时精确窗池 0.840/0.735（n=2，12z run）；~23h 偏移与跨年错配各一条已撤回留证；ERA5 日文件为累计结束口径；判决标准 DRAFT-008 待批准；每池 n<5 不下判决）；</p>
   <div class="tblwrap"><table>
     <thead><tr><th>时效</th><th>z500 RMSE 全球<br>(m²/s²)</th>
     <th>z500 珠江口</th><th>msl RMSE 全球<br>(Pa)</th><th>msl 珠江口</th></tr></thead>
     <tbody>
-      <tr><td class='task'>+12h</td><td>32.2 <span class='detail'>[29.8–34.5, n=11]</span></td><td>18.0 <span class='detail'>[4.8–30.4, n=11]</span></td><td>68.1 <span class='detail'>[51.3–81.2, n=11]</span></td><td>26.8 <span class='detail'>[11.0–48.9, n=11]</span></td></tr><tr><td class='task'>+24h</td><td>46.5 <span class='detail'>[40.5–51.3, n=14]</span></td><td>16.9 <span class='detail'>[8.2–33.7, n=14]</span></td><td>94.0 <span class='detail'>[76.7–109.3, n=15]</span></td><td>26.0 <span class='detail'>[15.0–43.7, n=15]</span></td></tr><tr><td class='task'>+48h</td><td>83.7 <span class='detail'>[69.4–96.4, n=13]</span></td><td>16.9 <span class='detail'>[8.2–33.3, n=13]</span></td><td>130.5 <span class='detail'>[107.2–161.8, n=13]</span></td><td>29.4 <span class='detail'>[15.3–55.8, n=13]</span></td></tr><tr><td class='task'>+60h</td><td>89.9</td><td>18.2</td><td>145.0</td><td>24.7</td></tr><tr><td class='task'>+72h</td><td>133.4 <span class='detail'>[105.6–168.6, n=11]</span></td><td>21.3 <span class='detail'>[8.6–30.3, n=11]</span></td><td>176.2 <span class='detail'>[141.2–209.4, n=11]</span></td><td>25.1 <span class='detail'>[14.0–34.6, n=11]</span></td></tr><tr><td class='task'>+84h</td><td>129.5</td><td>18.4</td><td>181.9</td><td>26.6</td></tr><tr><td class='task'>+96h</td><td>202.7 <span class='detail'>[170.8–252.9, n=8]</span></td><td>26.1 <span class='detail'>[19.7–34.3, n=8]</span></td><td>238.4 <span class='detail'>[196.4–279.4, n=8]</span></td><td>36.1 <span class='detail'>[13.8–59.0, n=8]</span></td></tr><tr><td class='task'>+108h</td><td>214.4</td><td>24.7</td><td>268.1</td><td>52.2</td></tr><tr><td class='task'>+120h</td><td>318.2 <span class='detail'>[253.7–402.9, n=6]</span></td><td>34.0 <span class='detail'>[25.8–43.6, n=6]</span></td><td>358.7 <span class='detail'>[290.0–441.7, n=6]</span></td><td>35.0 <span class='detail'>[16.9–65.4, n=6]</span></td></tr>
+      <tr><td class='task'>+12h</td><td>32.1 <span class='detail'>[29.8–34.5, n=12]</span></td><td>19.2 <span class='detail'>[4.8–32.1, n=12]</span></td><td>67.5 <span class='detail'>[51.3–81.2, n=12]</span></td><td>28.8 <span class='detail'>[11.0–50.2, n=12]</span></td></tr><tr><td class='task'>+24h</td><td>46.5 <span class='detail'>[40.5–51.3, n=14]</span></td><td>16.9 <span class='detail'>[8.2–33.7, n=14]</span></td><td>94.0 <span class='detail'>[76.7–109.3, n=15]</span></td><td>26.0 <span class='detail'>[15.0–43.7, n=15]</span></td></tr><tr><td class='task'>+48h</td><td>83.7 <span class='detail'>[69.4–96.4, n=13]</span></td><td>16.9 <span class='detail'>[8.2–33.3, n=13]</span></td><td>130.5 <span class='detail'>[107.2–161.8, n=13]</span></td><td>29.4 <span class='detail'>[15.3–55.8, n=13]</span></td></tr><tr><td class='task'>+60h</td><td>89.9</td><td>18.2</td><td>145.0</td><td>24.7</td></tr><tr><td class='task'>+72h</td><td>133.4 <span class='detail'>[105.6–168.6, n=11]</span></td><td>21.3 <span class='detail'>[8.6–30.3, n=11]</span></td><td>176.2 <span class='detail'>[141.2–209.4, n=11]</span></td><td>25.1 <span class='detail'>[14.0–34.6, n=11]</span></td></tr><tr><td class='task'>+84h</td><td>129.5</td><td>18.4</td><td>181.9</td><td>26.6</td></tr><tr><td class='task'>+96h</td><td>202.7 <span class='detail'>[170.8–252.9, n=8]</span></td><td>26.1 <span class='detail'>[19.7–34.3, n=8]</span></td><td>238.4 <span class='detail'>[196.4–279.4, n=8]</span></td><td>36.1 <span class='detail'>[13.8–59.0, n=8]</span></td></tr><tr><td class='task'>+108h</td><td>214.4</td><td>24.7</td><td>268.1</td><td>52.2</td></tr><tr><td class='task'>+120h</td><td>318.2 <span class='detail'>[253.7–402.9, n=6]</span></td><td>34.0 <span class='detail'>[25.8–43.6, n=6]</span></td><td>358.7 <span class='detail'>[290.0–441.7, n=6]</span></td><td>35.0 <span class='detail'>[16.9–65.4, n=6]</span></td></tr>
     </tbody>
   </table></div>
   <p class='note'>滞后集合 CRPS（珠江口窗，valid 20260925 00z，n=6 条）：msl: CRPS 5.48（M=4，s/s=1.23）；z: CRPS 16.03（M=4，s/s=0.32）。口径：同模式近邻 run 为成员，离散度系统性偏小——非 AIFS-ENS（开放商店无 ENS，实测 404 在案）</p>
-  <p class="note">生成：2026-09-27 06:29 （update_measured.py 幂等滚动更新）· 档案每文件 sha256 清单可回查字节级来源</p>
+  <p class="note">生成：2026-09-27 10:03 （update_measured.py 幂等滚动更新）· 档案每文件 sha256 清单可回查字节级来源</p>
 </section>
 <!-- MEASURED:END -->
 
