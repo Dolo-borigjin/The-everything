@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScaleBench v2.0 — 自动重整化公开基准 · LSWM/ARM</title>
-<meta name="description" content="ScaleBench：测机器能否自己发现宏观定律并诚实给出误差界。17 题榜单 overall 0.9931，防刷分是设计目标。">
+<title>ScaleBench v2.1 — 自动重整化公开基准 · LSWM/ARM</title>
+<meta name="description" content="ScaleBench：测机器能否自己发现宏观定律并诚实给出误差界。18 题榜单 overall 0.9935，防刷分是设计目标。">
 <style>
   :root{
     --bg:#0b0e14; --panel:#121722; --panel2:#171e2c; --line:#232c3f;
@@ -68,14 +68,14 @@
 
 <header class="hero">
   <div class="kicker">LSWM / ARM · Public Benchmark · <a href="./index.html">English</a></div>
-  <h1>ScaleBench<span class="v">v2.0</span></h1>
+  <h1>ScaleBench<span class="v">v2.1</span></h1>
   <p class="sub">测的是<b>自动重整化</b>：给定微观模拟器，机器能否自己发现宏观定律，
   并<b>诚实地</b>给出适用边界与误差界。防刷分是设计目标，不是事后补丁。
   榜单唯一准绳：<code>leaderboard.json</code>；复现仲裁脚本：<code>reproduce.py</code>。</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num">0.9931</div><div class="lbl">OVERALL（17 题均值）</div></div>
-    <div class="stat"><div class="num">17</div><div class="lbl">考题 · 7 任务族</div></div>
-    <div class="stat"><div class="num">10 / 17</div><div class="lbl">满分题</div></div>
+    <div class="stat"><div class="num">0.9935</div><div class="lbl">OVERALL（18 题均值）</div></div>
+    <div class="stat"><div class="num">18</div><div class="lbl">考题 · 7 任务族</div></div>
+    <div class="stat"><div class="num">11 / 18</div><div class="lbl">满分题</div></div>
     <div class="stat"><div class="num">±0.02</div><div class="lbl">复现仲裁容差</div></div>
   </div>
 </header>
@@ -178,6 +178,12 @@
         <td class="guard">把预报技巧误认为决策价值；终态指标藏慢燃成本</td>
       </tr>
       <tr>
+        <td class="task">ets_caliber_guard<div class="family">Chaos-Audit · 口径守门</div></td>
+        <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
+        <td>三类拒收进代码（23h 有效日/11h 12z 日文件/跨年）；精确窗逐时算术恒等；饱和自诊断在册（0.1mm=0 而 1mm=0.642）<div class="detail">验证通道审计自家口径——09-21/26 定罪链固化成题</div></td>
+        <td class="guard">口径错配冒充技巧；阈值饱和被头条数字掩盖</td>
+      </tr>
+      <tr>
         <td class="task">eniac_recreation<div class="family">Known-Recovery · ENIAC 复刻</div></td>
         <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
         <td>ENIAC 1950 复刻三口径：V1 Rossby 频散逐位对拍、V2 定常流守恒、V3 谱收敛（分辨率加倍场差 &lt;1e-4，99.99 纪律）<div class="detail">史上第一个数值天气预报的端到端复刻，三口径全过</div></td>
@@ -263,7 +269,7 @@ python -m scalebench.reproduce --report out.json              <span class="c"># 
 
 <footer>
   <div>ScaleBench 是 LSWM 世界模型的裁判权组件（白皮书 §6）。治理：基准与理论卡格式开源——用开放换标准地位。</div>
-  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index.html">English</a> · v2.0 · 2026-09</div>
+  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index.html">English</a> · v2.1 · 2026-09</div>
 </footer>
 
 </div>
