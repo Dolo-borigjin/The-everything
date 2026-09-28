@@ -1,8 +1,8 @@
 {
   "bench": "ScaleBench",
   "version": "0.1",
-  "generated_at": 1790580273.930829,
-  "overall": 0.9864,
+  "generated_at": 1790580311.134356,
+  "overall": 0.9864038549990596,
   "tasks": [
     {
       "task": "known_recovery_kpp",
