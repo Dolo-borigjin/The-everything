@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScaleBench v2.2 — 自动重整化公开基准 · LSWM/ARM</title>
-<meta name="description" content="ScaleBench：测机器能否自己发现宏观定律并诚实给出误差界。19 题榜单 overall 0.9857，防刷分是设计目标。">
+<title>ScaleBench v2.3 — 自动重整化公开基准 · LSWM/ARM</title>
+<meta name="description" content="ScaleBench：测机器能否自己发现宏观定律并诚实给出误差界。20 题榜单 overall 0.9864，防刷分是设计目标。">
 <style>
   :root{
     --bg:#0b0e14; --panel:#121722; --panel2:#171e2c; --line:#232c3f;
@@ -68,14 +68,14 @@
 
 <header class="hero">
   <div class="kicker">LSWM / ARM · Public Benchmark · <a href="./index.html">English</a></div>
-  <h1>ScaleBench<span class="v">v2.2</span></h1>
+  <h1>ScaleBench<span class="v">v2.3</span></h1>
   <p class="sub">测的是<b>自动重整化</b>：给定微观模拟器，机器能否自己发现宏观定律，
   并<b>诚实地</b>给出适用边界与误差界。防刷分是设计目标，不是事后补丁。
   榜单唯一准绳：<code>leaderboard.json</code>；复现仲裁脚本：<code>reproduce.py</code>。</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num">0.9857</div><div class="lbl">OVERALL（19 题均值）</div></div>
-    <div class="stat"><div class="num">19</div><div class="lbl">考题 · 7 任务族</div></div>
-    <div class="stat"><div class="num">11 / 19</div><div class="lbl">满分题</div></div>
+    <div class="stat"><div class="num">0.9864</div><div class="lbl">OVERALL（20 题均值）</div></div>
+    <div class="stat"><div class="num">20</div><div class="lbl">考题 · 7 任务族</div></div>
+    <div class="stat"><div class="num">12 / 20</div><div class="lbl">满分题</div></div>
     <div class="stat"><div class="num">±0.02</div><div class="lbl">复现仲裁容差</div></div>
   </div>
 </header>
@@ -190,6 +190,12 @@
         <td class="guard">白噪声集合把 INCONCLUSIVE 报成稳定；超扩散不上报</td>
       </tr>
       <tr>
+        <td class="task">rossby_quasi_stationary<div class="family">Discovery · 准定常</div></td>
+        <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
+        <td>急流 Doppler-RH 漂移 +6.3e-6 vs ERA5 五日准定常 +4.8e-6（差 33%）；真值 m=3–8 全准定常（&lt;15%|RH|）；地形非锚定实验在案<div class="detail">准定常=急流平衡而非地形——fft 符号定罪与长短窗纪律入题注</div></td>
+        <td class="guard">未实验就归因地形；短窗漂移外推；fft 符号约定错误</td>
+      </tr>
+      <tr>
         <td class="task">eniac_recreation<div class="family">Known-Recovery · ENIAC 复刻</div></td>
         <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
         <td>ENIAC 1950 复刻三口径：V1 Rossby 频散逐位对拍、V2 定常流守恒、V3 谱收敛（分辨率加倍场差 &lt;1e-4，99.99 纪律）<div class="detail">史上第一个数值天气预报的端到端复刻，三口径全过</div></td>
@@ -223,7 +229,7 @@
     </tbody>
   </table></div>
   <p class='note'>滞后集合 CRPS（珠江口窗，valid 20260928 00z，n=10 条）：msl: CRPS 17.58（M=6，s/s=0.38）；z: CRPS 5.61（M=6，s/s=0.96）。口径：同模式近邻 run 为成员，离散度系统性偏小——非 AIFS-ENS（开放商店无 ENS，实测 404 在案）</p>
-  <p class="note">生成：2026-09-28 13:49 （update_measured.py 幂等滚动更新）· 档案每文件 sha256 清单可回查字节级来源</p>
+  <p class="note">生成：2026-09-28 15:24 （update_measured.py 幂等滚动更新）· 档案每文件 sha256 清单可回查字节级来源</p>
 </section>
 <!-- MEASURED:END -->
 
@@ -275,7 +281,7 @@ python -m scalebench.reproduce --report out.json              <span class="c"># 
 
 <footer>
   <div>ScaleBench 是 LSWM 世界模型的裁判权组件（白皮书 §6）。治理：基准与理论卡格式开源——用开放换标准地位。</div>
-  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index.html">English</a> · v2.2 · 2026-09</div>
+  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index.html">English</a> · v2.3 · 2026-09</div>
 </footer>
 
 </div>

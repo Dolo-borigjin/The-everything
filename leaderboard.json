@@ -1,8 +1,8 @@
 {
   "bench": "ScaleBench",
   "version": "0.1",
-  "generated_at": 1790485990.473281,
-  "overall": 0.9856882684200627,
+  "generated_at": 1790580273.930829,
+  "overall": 0.9864,
   "tasks": [
     {
       "task": "known_recovery_kpp",
@@ -308,6 +308,24 @@
         "spread_skill_ratio": 9.36,
         "spread_skill_note": "9.4 超扩散如实上报（玩具扰动早期物理）——校准带外但报告在册（半分）； bred/ET 业务扰动是后续单元",
         "crps_abs_dev": 9.18e-08
+      }
+    },
+    {
+      "task": "rossby_quasi_stationary",
+      "score": 1.0,
+      "details": {
+        "model_drift_rate": 6.338907700784045e-06,
+        "real_drift_rate_m3": 4.76253190121054e-06,
+        "rel_diff": 0.33099532607284404,
+        "quasi_stationary_family": {
+          "3": 4.763e-06,
+          "4": 1.463e-06,
+          "5": -9.99e-07,
+          "6": -1.015e-06,
+          "8": -1.199e-06
+        },
+        "orog_note": "理想大陆地形不进一步锚定（1e-3 加速漂移、1e-2 失稳在案）——准定常=急流 Doppler-RH 平衡，非地形锚定",
+        "fft_convention": "np.fft +m 索引 = e^{−imλ} 分量，物理相速取负（2026-09-28 符号定罪）"
       }
     }
   ]

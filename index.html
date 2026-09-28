@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScaleBench v2.2 — Public Benchmark for Auto-Renormalization · LSWM/ARM</title>
-<meta name="description" content="ScaleBench: can a machine discover macroscopic laws from a microscopic simulator and honestly report error bars? 19-task leaderboard, overall 0.9857 Anti-gaming by design.">
+<title>ScaleBench v2.3 — Public Benchmark for Auto-Renormalization · LSWM/ARM</title>
+<meta name="description" content="ScaleBench: can a machine discover macroscopic laws from a microscopic simulator and honestly report error bars? 20-task leaderboard, overall 0.9864 Anti-gaming by design.">
 <style>
   :root{
     --bg:#0b0e14; --panel:#121722; --panel2:#171e2c; --line:#232c3f;
@@ -69,16 +69,16 @@
 
 <header class="hero">
   <div class="kicker">LSWM / ARM · Public Benchmark <span class="lang"><a href="./index-zh.html">中文版</a></span></div>
-  <h1>ScaleBench<span class="v">v2.2</span></h1>
+  <h1>ScaleBench<span class="v">v2.3</span></h1>
   <p class="sub">A benchmark for <b>auto-renormalization</b>: given a microscopic
   simulator, can a machine discover macroscopic effective laws — and report their
   validity boundaries and error bars <b>honestly</b>? Anti-gaming is a design
   goal, not a patch. Single source of truth: <code>leaderboard.json</code>;
   executable arbitration: <code>reproduce.py</code>.</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num">0.9857</div><div class="lbl">OVERALL (mean of 19)</div></div>
-    <div class="stat"><div class="num">19</div><div class="lbl">TASKS · 7 FAMILIES</div></div>
-    <div class="stat"><div class="num">11 / 19</div><div class="lbl">PERFECT SCORES</div></div>
+    <div class="stat"><div class="num">0.9864</div><div class="lbl">OVERALL (mean of 20)</div></div>
+    <div class="stat"><div class="num">20</div><div class="lbl">TASKS · 7 FAMILIES</div></div>
+    <div class="stat"><div class="num">12 / 20</div><div class="lbl">PERFECT SCORES</div></div>
     <div class="stat"><div class="num">±0.02</div><div class="lbl">REPRODUCTION TOLERANCE</div></div>
   </div>
 </header>
@@ -195,6 +195,12 @@
         <td class="guard">White-noise ensembles reporting INCONCLUSIVE as stability; unreported over-dispersion</td>
       </tr>
       <tr>
+        <td class="task">rossby_quasi_stationary<div class="family">Discovery · 准定常</div></td>
+        <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
+        <td>Jet Doppler-RH drift +6.3e-6 rad/s vs ERA5 five-day quasi-stationary reading +4.8e-6 (rel diff 33%); real m=3–8 all quasi-stationary (&lt;15%|RH|); orographic non-anchoring experiment on record<div class="detail">stationarity = jet balance, not mountains — with the fft sign conviction and short-vs-long-window discipline in the task metadata</div></td>
+        <td class="guard">Attributing stationarity to orography untested; short-window drift readings extrapolated; fft sign conventions</td>
+      </tr>
+      <tr>
         <td class="task">eniac_recreation<div class="family">Known-Recovery · ENIAC 复刻</div></td>
         <td class="scorecell s-hi">1.000<div class="bar"><i style="width:100%"></i></div></td>
         <td>ENIAC 1950 复刻三口径：V1 Rossby 频散逐位对拍、V2 定常流守恒、V3 谱收敛（分辨率加倍场差 &lt;1e-4，99.99 纪律）<div class="detail">历史上第一个数值天气预报的端到端复刻，三口径全过</div></td>
@@ -228,7 +234,7 @@
     </tbody>
   </table></div>
   <p class='note'>Lagged-ensemble CRPS (PRD window, valid 20260928 00z, n=10 records): msl: CRPS 17.58（M=6，s/s=0.38）；z: CRPS 5.61（M=6，s/s=0.96）. Caliber: members are same-model recent runs (lagged ensemble), systematically under-dispersive — not AIFS-ENS (ENS absent from the open store, 404 on record)</p>
-  <p class="note">Generated: 2026-09-28 13:49 （update_measured.py idempotent rolling update）· per-file sha256 manifest traces byte-level provenance</p>
+  <p class="note">Generated: 2026-09-28 15:24 （update_measured.py idempotent rolling update）· per-file sha256 manifest traces byte-level provenance</p>
 </section>
 <!-- MEASURED:END -->
 
@@ -289,7 +295,7 @@ python -m scalebench.reproduce --report out.json              <span class="c"># 
   <div>ScaleBench is the adjudication component of the LSWM world model
   (whitepaper §6). Governance: benchmark and theory-card formats are open —
   openness in exchange for standard status.</div>
-  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index-zh.html">中文版</a> · v2.2 · 2026-09</div>
+  <div><a href="https://doi.org/10.5281/zenodo.22933596"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22933596.svg" alt="DOI" style="vertical-align:middle"></a> · <a href="./leaderboard.json">leaderboard.json</a> · <a href="./README-PUBLIC.md">README-PUBLIC</a> · <a href="./index-zh.html">中文版</a> · v2.3 · 2026-09</div>
 </footer>
 
 </div>
