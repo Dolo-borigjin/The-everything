@@ -1,0 +1,147 @@
+{
+  "cards": [
+    {
+      "id": "law.rossby_dispersion_qg2",
+      "version": "0.1.0",
+      "status": "draft",
+      "derived_from": [],
+      "variables": [
+        {
+          "name": "sigma",
+          "state_type_tag": "field:phase_rate",
+          "phi_readable": "σ（谱模相位漂移率）",
+          "unit": "rad/s"
+        }
+      ],
+      "dynamics": {
+        "equation": "σ_bt = 2Ωm/(a²k²)；σ_bc = 2Ωm/(a²(k²+2F))（双层 QG 线性频散）",
+        "closures": {},
+        "parameters": {
+          "omega_hat": 7.292115981362051e-05,
+          "F_hat": 4.999999988387605e-13,
+          "family_bt": "A",
+          "family_bc": "B"
+        }
+      },
+      "validity": {
+        "regime": {
+          "parameter_ranges": {
+            "amplitude_rel": [
+              0.0,
+              0.01
+            ]
+          },
+          "grid_requirements": {},
+          "numerical_requirements": {},
+          "boundary_conditions": [],
+          "conservation_requirements": [],
+          "input_requirements": [],
+          "band": [
+            "linear_regime"
+          ],
+          "exclusions": []
+        },
+        "error_bounds": [
+          {
+            "metric": "omega_rel_err",
+            "tolerance": 1.1157536678018884e-08,
+            "coverage": 0.99,
+            "calibration": null
+          },
+          {
+            "metric": "F_rel_err",
+            "tolerance": 2.322479004443292e-09,
+            "coverage": 0.99,
+            "calibration": null
+          }
+        ],
+        "horizon": {
+          "type": "linear_regime",
+          "note": "非线性/真实大气外推是 G1 裁决项"
+        }
+      },
+      "provenance": {
+        "method": "phase-rate zonal spectral discovery",
+        "anchor_tests": "tests/test_rossby_discovery.py",
+        "pipeline": "环 #8 外环"
+      },
+      "deprecation": null
+    },
+    {
+      "id": "law.sir_dynamics_mf",
+      "version": "0.1.0",
+      "status": "draft",
+      "derived_from": [],
+      "variables": [
+        {
+          "name": "i_dot",
+          "state_type_tag": "field:tendency",
+          "phi_readable": "di/dt（份额口径）",
+          "unit": "1/day"
+        }
+      ],
+      "dynamics": {
+        "equation": "di/dt = β·s·i − γ·i（稀疏回归发现形式）",
+        "closures": {},
+        "parameters": {
+          "beta_hat": 1.958499257013326,
+          "gamma_hat": 0.978416944170104,
+          "R0_hat": 2.001702105306987,
+          "terms": [
+            "i",
+            "s*i"
+          ],
+          "n_points": 3055
+        }
+      },
+      "validity": {
+        "regime": {
+          "parameter_ranges": {
+            "amplitude_rel": [
+              0.0,
+              1.0
+            ]
+          },
+          "grid_requirements": {},
+          "numerical_requirements": {},
+          "boundary_conditions": [],
+          "conservation_requirements": [],
+          "input_requirements": [],
+          "band": [
+            "mean_field_limit"
+          ],
+          "exclusions": []
+        },
+        "error_bounds": [
+          {
+            "metric": "beta_rel_err",
+            "tolerance": 0.020750371493337028,
+            "coverage": 0.99,
+            "calibration": null
+          },
+          {
+            "metric": "gamma_rel_err",
+            "tolerance": 0.021583055829895947,
+            "coverage": 0.99,
+            "calibration": null
+          }
+        ],
+        "horizon": {
+          "type": "mean_field",
+          "note": "有限 N Jensen 隙与系综口径在案"
+        }
+      },
+      "provenance": {
+        "method": "multi-initial pooling sparse regression",
+        "anchor_tests": "tests/test_sir_dynamics.py",
+        "pipeline": "环 #8 外环（SIR 第二层）"
+      },
+      "deprecation": null
+    }
+  ],
+  "registry_versions": {
+    "law.rossby_dispersion_qg2": 1,
+    "law.sir_dynamics_mf": 1
+  },
+  "status_note": "DRAFT 谱系登记（发现→卡→注册）；decision 不可见"
+}
