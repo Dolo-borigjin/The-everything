@@ -225,7 +225,7 @@
 <!-- MEASURED:BEGIN -->
 <section id="measured">
   <h2>Measured baselines (AIFS comparison · rolling)</h2>
-  <p class="note">Source: <code>data/aifs/baseline_measured.json</code> (269 measurements). Truth caliber = <b>AIFS's own 0h field</b> (self-consistency — consistency with its own analysis frame, not independent-observation accuracy); multi-run leads show mean [spread, n] — run-to-run spread is itself reading discipline. Precipitation ETS: two mispaired records RETRACTED (cross-year + ~23h offset, evidence retained); valid samples in two pools (+24h × ERA5 PRD window — run-day ±1h pool n=8: 0.691/0.495/0.426/0.375/0.287/0.172/0.088/0.000 — DRAFT-008 trial verdict: V-INCONCLUSIVE (median 0.331; coverage-collapse flag separates 3/11 saturated cases, zero false positives); exact-window hourly-rebuild pool: 0.84/0.735/-0.003 (n=3, 12z runs — negative on the wet day: over-forecast area at 0.1mm, real skill at 1–5mm); ERA5 daily files are accumulation-ending; verdict standard drafted (DRAFT-SPEC-008, pending ratification; n<5 per pool, no verdict yet)); </p>
+  <p class="note">Source: <code>data/aifs/baseline_measured.json</code> (269 measurements). Truth caliber = <b>AIFS's own 0h field</b> (self-consistency — consistency with its own analysis frame, not independent-observation accuracy); multi-run leads show mean [spread, n] — run-to-run spread is itself reading discipline. Precipitation ETS: two mispaired records RETRACTED (cross-year + ~23h offset, evidence retained); valid samples in two pools (2026-09-26: +24h × ERA5 PRD window — run-day ±1h pool n=6: 0.712/0.691/0.495/0.287/0.088/0.000 — DRAFT-008 trial verdict: V-INCONCLUSIVE (median 0.391; coverage-collapse flag cleanly separates saturated cases); exact-window hourly-rebuild pool: 0.840/0.735/−0.003 (n=3, 12z runs — negative on the wet day: over-forecast area at 0.1mm, real skill at 1–5mm); ~23h-offset and cross-year records retracted, evidence retained; ERA5 daily files are accumulation-ending; verdict standard drafted (DRAFT-SPEC-008, pending ratification); n<5 per pool, no verdict yet); </p>
   <div class="tblwrap"><table>
     <thead><tr><th>Lead</th><th>z500 RMSE global<br>(m²/s²)</th>
     <th>z500 PRD</th><th>MSL RMSE global<br>(Pa)</th><th>MSL PRD</th></tr></thead>
@@ -234,7 +234,7 @@
     </tbody>
   </table></div>
   <p class='note'>Lagged-ensemble CRPS (PRD window, valid 20261002 00z, n=18 records): msl: CRPS 17.53（M=6，s/s=0.76）；z: CRPS 7.31（M=6，s/s=1.30）. Caliber: members are same-model recent runs (lagged ensemble), systematically under-dispersive — not AIFS-ENS (ENS absent from the open store, 404 on record)</p>
-  <p class="note">Generated: 2026-10-02 16:41 （update_measured.py idempotent rolling update）· per-file sha256 manifest traces byte-level provenance</p>
+  <p class="note">Generated: 2026-10-02 16:45 （update_measured.py idempotent rolling update）· per-file sha256 manifest traces byte-level provenance</p>
 </section>
 <!-- MEASURED:END -->
 
