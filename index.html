@@ -225,7 +225,7 @@
 <!-- MEASURED:BEGIN -->
 <section id="measured">
   <h2>Measured baselines (AIFS comparison · rolling)</h2>
-  <p class="note">Source: <code>data/aifs/baseline_measured.json</code> (689 measurements). Truth caliber = <b>AIFS's own 0h field</b> (self-consistency — consistency with its own analysis frame, not independent-observation accuracy); multi-run leads show mean [spread, n] — run-to-run spread is itself reading discipline. Precipitation ETS: two mispaired records RETRACTED (cross-year + ~23h offset, evidence retained); valid samples in two pools (+24h × ERA5 PRD window — run-day ±1h pool n=15: 0.746/0.712/0.691/0.626/0.495/0.426/0.408/0.388/0.375/0.364/0.287/0.172/0.088/0.000/0.000 — SPEC-008 v1.0 verdict (ratified 2026-10-07): V-INCONCLUSIVE (median 0.388; coverage-collapse flag separates 9/28 saturated cases, zero false positives); exact-window hourly-rebuild pool n=15: 0.84/0.735/0.656/0.629/0.609/0.532/0.447/0.438/0.405/0.401/0.391/0.362/0.359/0.191/-0.003 — negative on the wet day: over-forecast area at 0.1mm, real skill at 1–5mm; ERA5 daily files are accumulation-ending; verdict standard drafted (SPEC-008 v1.0, ratified 2026-10-07; P2 verdict: V-INCONCLUSIVE (median 0.438))); </p>
+  <p class="note">Source: <code>data/aifs/baseline_measured.json</code> (689 measurements). Truth caliber = <b>AIFS's own 0h field</b> (self-consistency — consistency with its own analysis frame, not independent-observation accuracy); multi-run leads show mean [spread, n] — run-to-run spread is itself reading discipline. Precipitation ETS: two mispaired records RETRACTED (cross-year + ~23h offset, evidence retained); valid samples in two pools (+24h × ERA5 PRD window — run-day ±1h pool n=16: 0.746/0.712/0.691/0.626/0.495/0.426/0.408/0.388/0.375/0.364/0.287/0.172/0.088/0.000/0.000/0.000 — SPEC-008 v1.0 verdict (ratified 2026-10-07): V-INCONCLUSIVE (median 0.382; coverage-collapse flag separates 10/29 saturated cases, zero false positives); exact-window hourly-rebuild pool n=15: 0.84/0.735/0.656/0.629/0.609/0.532/0.447/0.438/0.405/0.401/0.391/0.362/0.359/0.191/-0.003 — negative on the wet day: over-forecast area at 0.1mm, real skill at 1–5mm; ERA5 daily files are accumulation-ending; verdict standard drafted (SPEC-008 v1.0, ratified 2026-10-07; P2 verdict: V-INCONCLUSIVE (median 0.438))); </p>
   <div class="tblwrap"><table>
     <thead><tr><th>Lead</th><th>z500 RMSE global<br>(m²/s²)</th>
     <th>z500 PRD</th><th>MSL RMSE global<br>(Pa)</th><th>MSL PRD</th></tr></thead>
@@ -234,7 +234,7 @@
     </tbody>
   </table></div>
   <p class='note'>Lagged-ensemble CRPS (PRD window, valid 20261007 00z, n=54 records): msl: CRPS 38.00（M=11，s/s=0.97）；z: CRPS 64.36（M=11，s/s=0.79）. Caliber: members are same-model recent runs (lagged ensemble), systematically under-dispersive — not AIFS-ENS (ENS absent from the open store, 404 on record)</p>
-  <p class="note">Generated: 2026-10-08 06:27 （update_measured.py idempotent rolling update）· per-file sha256 manifest traces byte-level provenance</p>
+  <p class="note">Generated: 2026-10-08 12:21 （update_measured.py idempotent rolling update）· per-file sha256 manifest traces byte-level provenance</p>
 </section>
 <!-- MEASURED:END -->
 
