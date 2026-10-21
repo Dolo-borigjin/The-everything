@@ -1,9 +1,8 @@
 {
   "bench": "ScaleBench",
   "version": "0.1",
-  "generated_at": 1791348921.420691,
-  "overall": 0.9714038549990596,
-  "change_note": "v2.4（2026-10-07）：第 20 题真值判据随 SPEC-011 批准生效（f0 双窗对照——日频相位法已定罪失效）——score 1.000→0.700（② 当前窗未过=判据设计意图，不藏分）；overall 0.9864→0.9714；v2.3 历史口径保留不追溯",
+  "generated_at": 1792565023.877305,
+  "overall": 0.9727655761895806,
   "tasks": [
     {
       "task": "known_recovery_kpp",
@@ -358,6 +357,23 @@
         "orog_note": "理想大陆地形不进一步锚定（1e-3 加速漂移、1e-2 失稳在案）——准定常=急流 Doppler-RH 平衡，非地形锚定",
         "fft_convention": "np.fft +m 索引 = e^{−imλ} 分量，物理相速取负（2026-09-28 符号定罪）"
       }
+    },
+    {
+      "task": "orographic_forcing_gate",
+      "score": 1.0,
+      "details": {
+        "linear_forcing_rel_err": 6.481266092702162e-15,
+        "energy_drift_24h": 1.2795067003626558e-10,
+        "dual_source": {
+          "corr": 0.7315,
+          "threshold": 0.7
+        },
+        "analytic_anchor": "∂ζ/∂t|₀ = −U·h̃_λ/a（刚体流×正弦脊，逐位对照）",
+        "conservation_anchor": "地形不做净功（ν8=κ=0，RK4 24h）",
+        "data": "ETOPO5 1°（PacIOOS ncss 子集）+ ERA5 地势（era5_orog_global.nc）",
+        "score_note": "三段全解析/实测锚——地形接入正确性可复算"
+      }
     }
-  ]
+  ],
+  "change_note": "ScaleBench v2.5：第 21 题 orographic_forcing_gate 入榜（1.000——线性山岳强迫逐位锚 6.5e-15/守恒漂移 1.3e-10/ETOPO×ERA5 双源 corr 0.7315）；19 题仲裁零漂移、第 20 题 0.700 同口径；overall 0.9714→0.9728"
 }
